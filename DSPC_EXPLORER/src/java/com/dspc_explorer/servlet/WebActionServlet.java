@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author abdul
+ * @author Abdul
  */
 public class WebActionServlet extends HttpServlet {
 
