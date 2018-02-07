@@ -5,11 +5,14 @@
  */
 package com.dspc_explorer.Commands;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
- * @author abdul
+ * @author Abdul
  */
-public interface CommandInterface {
-    
-    
+public interface Command {
+       public void execute(HttpServletRequest request, HttpServletResponse response);
+ 
 }

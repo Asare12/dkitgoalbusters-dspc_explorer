@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-Feb-2018 08:05:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dspc_explorer.Dtos.Graveowner" table="graveowner" catalog="dspc_explorer" optimistic-lock="version">
+        <id name="graveId" type="int">
+            <column name="grave_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="section" class="com.dspc_explorer.Dtos.Section" fetch="select">
+            <column name="sectionId" not-null="true" />
+        </many-to-one>
+        <property name="graveRefCode" type="string">
+            <column name="grave_ref_code" length="50" />
+        </property>
+        <property name="graveOwnerName" type="string">
+            <column name="grave_owner_name" length="100" />
+        </property>
+        <property name="graveOwnerAddress" type="string">
+            <column name="grave_owner_address" length="150" />
+        </property>
+        <property name="graveopenDate" type="date">
+            <column name="graveopen_date" length="10" />
+        </property>
+        <property name="graveRow" type="int">
+            <column name="grave_row" not-null="true" />
+        </property>
+        <property name="graveDepth" type="int">
+            <column name="grave_depth" not-null="true" />
+        </property>
+        <property name="graveLocation" type="string">
+            <column name="grave_location" length="100" />
+        </property>
+        <property name="graveImage" type="binary">
+            <column name="grave_image" />
+        </property>
+        <set name="registrars" table="registrar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="graveId" not-null="true" />
+            </key>
+            <one-to-many class="com.dspc_explorer.Dtos.Registrar" />
+        </set>
+    </class>
+</hibernate-mapping>

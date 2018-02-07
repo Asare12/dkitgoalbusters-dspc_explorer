@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-Feb-2018 08:05:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dspc_explorer.Dtos.Registrar" table="registrar" catalog="dspc_explorer" optimistic-lock="version">
+        <id name="regId" type="int">
+            <column name="reg_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="graveowner" class="com.dspc_explorer.Dtos.Graveowner" fetch="select">
+            <column name="graveId" not-null="true" />
+        </many-to-one>
+        <property name="regFirstName" type="string">
+            <column name="reg_first_name" length="100" />
+        </property>
+        <property name="regMiddleName" type="string">
+            <column name="reg_middle_name" length="100" />
+        </property>
+        <property name="regLastName" type="string">
+            <column name="reg_last_name" length="100" not-null="true" />
+        </property>
+        <property name="regSex" type="string">
+            <column name="reg_sex" length="100" />
+        </property>
+        <property name="regAge" type="string">
+            <column name="reg_age" length="100" />
+        </property>
+        <property name="regReligion" type="string">
+            <column name="reg_religion" length="100" />
+        </property>
+        <property name="regOccupation" type="string">
+            <column name="reg_occupation" length="100" />
+        </property>
+        <property name="regDeathLocation" type="string">
+            <column name="reg_death_location" length="100" />
+        </property>
+        <property name="regMarriageStatus" type="string">
+            <column name="reg_marriage_status" length="100" />
+        </property>
+        <property name="regdeathDate" type="date">
+            <column name="regdeath_date" length="10" />
+        </property>
+        <property name="regburialDate" type="date">
+            <column name="regburial_date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-Feb-2018 08:05:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dspc_explorer.Dtos.Users" table="users" catalog="dspc_explorer" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="userId" />
+            <generator class="identity" />
+        </id>
+        <property name="userType" type="int">
+            <column name="userType" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" length="100" />
+        </property>
+        <property name="userPassword" type="string">
+            <column name="userPassword" length="100" />
+        </property>
+        <property name="passwordSalt" type="string">
+            <column name="passwordSalt" length="100" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="firstName" length="100" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="mobilePhone" type="string">
+            <column name="mobilePhone" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
