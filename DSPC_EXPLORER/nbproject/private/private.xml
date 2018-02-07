@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/abdul/NetBeansProjects/DSPC_EXPLORER/src/java/hibernate.cfg.xml</file>
-            <file>file:/home/abdul/NetBeansProjects/DSPC_EXPLORER/src/java/com/dspc_explorer/Daos/HibernateUtil.java</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Dtos/Users.java</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/services/UserServices.java</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Commands/CommandFactory.java</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Commands/LoginUserCommand.java</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/web/loginAttempt.jsp</file>
+            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/services/EmailServices.java</file>
         </group>
     </open-files>
 </project-private>
