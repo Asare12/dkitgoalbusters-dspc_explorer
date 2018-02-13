@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!Doctype html>
 
+<!Doctype html>
+
 <html lang="en">
 
 <head>
@@ -33,6 +35,24 @@ function enable() {
     document.getElementById("dyear").disabled = false;
 
 }
+
+var count = 0;
+
+function showAdminLogin() {
+
+   count++;
+
+	if (count >= 5) {
+      count = 0;
+	location.href = 'log_in.jsp';
+
+
+
+    }
+}
+
+
+
 
 </script>
 
@@ -397,11 +417,15 @@ function enable() {
         </div>
 
 
+        <span style="font-size :10px  ;color:white;"
+        onClick="showAdminLogin();">
+         <p >v1.1</p>
+        </span>
+
+
+
+
       	</div>
-
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
