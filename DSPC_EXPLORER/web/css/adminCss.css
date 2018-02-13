@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-Feb-2018, 19:37:44
+    Author     : Asare
+*/
+body
+{
+      background-color: lightgray !important;
+}
+thead  {
+    background-color: #006DCC;
+    color: white;
+}
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.input-group.md-form.form-sm.form-2 input.grey-border  {
+    border: 1px solid #e9ecef;
+}
+.input-group input[type=text]:focus:not([readonly]) {
+    box-shadow: none;
+}
+.form-2 .input-group-text {
+    border: 1px solid #e9ecef;
+}
