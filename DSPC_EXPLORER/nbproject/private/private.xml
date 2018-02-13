@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Dtos/Users.java</file>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/services/UserServices.java</file>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Commands/CommandFactory.java</file>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/Commands/LoginUserCommand.java</file>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/web/loginAttempt.jsp</file>
-            <file>file:/home/abdul/dspc_explorer/DSPC_EXPLORER/src/java/com/dspc_explorer/services/EmailServices.java</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/log_in.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/index.html</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/index.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/css/login.css</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/sample.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/contact_us.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/map.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/css/landing_page.css</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/landing_page.jsp</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/css/contact_us.css</file>
+            <file>file:/C:/Users/VIT/Documents/dspc_explorer/DSPC_EXPLORER/web/js/secretlink.js</file>
         </group>
     </open-files>
 </project-private>
