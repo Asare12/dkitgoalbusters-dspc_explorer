@@ -53,24 +53,24 @@ public class LoginUserCommand implements Command {
                     session.setAttribute("user", userLoggingIn);
                     session.setAttribute("status", 0);
                     session.setAttribute("statusMessage", "Login Success" + userLoggingIn.getUserName());
-                    //session.setMaxInactiveInterval(15);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                    dispatcher.forward(request, response);
                 } else {
                     //if Login Fail set Sesssion attribte user with null
                     session.setAttribute("status", 1);
                     session.setAttribute("statusMessage", "Login Failed");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("loginFailed.jsp");
+                    dispatcher.forward(request, response);
                 }
             } else {
                 //if Login Fail set Sesssion attribte user with null
                 session.setAttribute("status", 2);
                 session.setAttribute("statusMessage", "No Valid Username or Password Entered");
             }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/loginAttempt.jsp");
-            dispatcher.forward(request, response);
 
-        } catch (ServletException | IOException ex) {
+        } catch (ServletException | IOException | Base64DecodingException ex) {
             Logger.getLogger(LoginUserCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Base64DecodingException ex) {
-            Logger.getLogger(LoginUserCommand.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("check loginCommand Exception");
         }
     }
 }

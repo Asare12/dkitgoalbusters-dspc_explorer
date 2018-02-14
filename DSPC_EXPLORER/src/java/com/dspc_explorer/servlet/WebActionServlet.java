@@ -33,11 +33,12 @@ public class WebActionServlet extends HttpServlet {
             throws ServletException, IOException {
          String action = request.getParameter("action");
         System.out.println(action);
-        //if (action != null) {
+        if (action != null) {
             Command command = new CommandFactory().createCommand(action);
             if (command != null) {
                 command.execute(request, response);
             }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

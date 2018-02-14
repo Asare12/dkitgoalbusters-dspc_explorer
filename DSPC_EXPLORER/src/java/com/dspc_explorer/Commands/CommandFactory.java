@@ -16,7 +16,7 @@ public class CommandFactory {
         System.out.println(actionString);
         //Instantiate the required Command object...
         if (actionString.equalsIgnoreCase("login")) {
-           // command = new LoginUserCommand();
+            command = new LoginUserCommand();
         } else if (actionString.equalsIgnoreCase("register")) {
             //command = new RegisterUserCommand();
         } else if (actionString.equalsIgnoreCase("update")) {

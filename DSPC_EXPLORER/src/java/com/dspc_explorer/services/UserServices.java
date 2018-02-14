@@ -83,7 +83,6 @@ public class UserServices {
                     byte[] storedPassword = Base64.decode(logingUser.getUserPassword());
                     if (Arrays.equals(storedPassword, encryptedEnteredPassword)) {
                         //Log the current user logged in into a file and the time logged in
-                        log.WriteLogOfLogin(logingUser);
                         return logingUser;
                     } else {
                         return null;
@@ -93,9 +92,9 @@ public class UserServices {
                 }
             }
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-//            Log4JLog test = new Log4JLog();
-//            test.WriteLogOfLogin(ex);
+
             Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception: FROM login() UserServices class");
         }
 
         return null;
