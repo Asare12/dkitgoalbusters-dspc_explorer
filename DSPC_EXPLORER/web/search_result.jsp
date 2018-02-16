@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <title>Search Result</title>
-      <link rel="stylesheet" href="./css/landing_page.css">
+      <link rel="stylesheet" href="./css/search_result.css">
 
 
 <script>
@@ -118,10 +118,21 @@ $('#outerbutton2').click(function(){
 
     </nav>
 
+<div id="top_heading">
+
+    <h5 class="pt-3">Havent found out the right record ? press refine and enter less parameters</h5>
+
+    <div class="col-xl-12  d-flex justify-content-center align-items-center ">
+
+    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 pb-2">
+    <button data-toggle="collapse" data-target="#demo3" class="btn btn-md btn-outline-primary btn-block btn-space  font-weight-bold "  type="button">Refine</button>
+    </div>
+  </div>
+
+</div>
 
 
-
-    <div id="demo3" class="collapse in btn-space" >
+    <div id="demo3" class="collapse in btn-space mt-3" >
 
       <div class="row">
     		<div class="col-md-12">
@@ -445,10 +456,15 @@ $('#outerbutton2').click(function(){
 
 
 
-    <h3 class="row justify-content-center text-white   ">Searh Results Grave #12</h3>
+
+<div class="tablo ">
+
+  <h3 class="row justify-content-center text-white  pt-4 ">Searh Results Grave #12</h3>
+
+
 
   <div class="row justify-content-center">
-    <table class="table table-bordered table-striped table-hover text-white w-75 font-weight-bold">
+    <table class="table table-bordered  table-hover text-white w-75 font-weight-bold table-inverse mt-4">
       <thead class="thead-inverse">
 
 
@@ -497,18 +513,112 @@ $('#outerbutton2').click(function(){
 
 
     </table>
-    <button class="btn btn-md btn-outline-primary btn-block btn-space w-75 font-weight-bold"  type="button">All Details</button>
 
-    <h5 class="pt-1">Havent found out the right record ? press refine and enter less parameters</h5>
+
+
 
     <div class="col-xl-12  d-flex justify-content-center align-items-center ">
 
-    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 pb-3">
-    <button data-toggle="collapse" data-target="#demo3" class="btn btn-md btn-outline-primary btn-block btn-space  font-weight-bold"  type="button">Refine</button>
+    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 pt-3">
+      <button class="btn btn-md btn-outline-primary btn-block btn-space  font-weight-bold"  type="button">All Details</button>
     </div>
   </div>
 
+</div>
+
+
+
   </div>
+
+
+
+
+
+
+
+  <div class="tablo ">
+
+    <h3 class="row justify-content-center text-white  pt-4 ">Searh Results Grave #165</h3>
+
+
+
+    <div class="row justify-content-center">
+      <table class="table table-bordered  table-hover text-white w-75 font-weight-bold table-inverse mt-4">
+        <thead class="thead-inverse">
+
+
+          <tr>
+            <th>Firstname</th>
+            <th>Surname</th>
+            <th>Birth Year</th>
+            <th>Death Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>1950</td>
+            <td>2017</td>
+
+          </tr>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>1950</td>
+            <td>2017</td>
+
+
+          </tr>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>1950</td>
+            <td>2017</td>
+
+
+          </tr>
+
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>1950</td>
+            <td>2017</td>
+
+          </tr>
+
+        </tbody>
+
+
+
+      </table>
+
+
+
+
+      <div class="col-xl-12  d-flex justify-content-center align-items-center ">
+
+      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 pt-3">
+        <button class="btn btn-md btn-outline-primary btn-block btn-space  font-weight-bold"  type="button">All Details</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
