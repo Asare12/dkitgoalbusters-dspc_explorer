@@ -8,7 +8,7 @@
 <!Doctype html>
 
 <html lang="en">
-
+ 
 <head>
     <meta charset="utf-8">
 
@@ -26,6 +26,15 @@
 
   <div class="container">
 
+          <nav>
+    <ul>
+      <a href=""><li><i class="home"></i> Home</li></a>
+      <a href=""><li><i class="contact-us"></i> Contact Us</li></a>
+      <a href=""><li><i class="about-us"></i> About Us</li></a>
+    </ul>
+
+    </nav>
+      
       <div class="row">
 
     <div class="col-xl-2  col-lg-2  col-md-1 col-sm-1 col-1"></div>

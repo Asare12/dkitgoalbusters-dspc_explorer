@@ -7,8 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!Doctype html>
 
-<!Doctype html>
-
 <html lang="en">
 
 <head>
@@ -18,23 +16,90 @@
 
       <title>Home</title>
         <link rel="stylesheet" href="./css/landing_page.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script>
-function disable() {
 
-    document.getElementById("byear").disabled = true;
-    document.getElementById("dyear").disabled = true;
+
+function init() {
+	var disableStatus = false;
+	var disableStatus1 = false;
+
+
+$('#anOtherButton').click(function(){
+
+
+	if (disableStatus) {
+		$('#byear').prop('disabled', false);
+		$('#dyear').prop('disabled', false);
+
+		if (disableStatus1) {
+			$('#outerbutton2').trigger('click');
+		}
+
+
+
+		disableStatus = false;
+
+	} else {
+		$('#byear').prop('disabled', true);
+		$('#byear').val('');
+		$('#dyear').prop('disabled', true);
+		$('#dyear').val('');
+		disableStatus = true;
+
+	}
+});
+
+
+
+
+$('#outerbutton2').click(function(){
+
+
+	if (disableStatus1) {
+		$('#advance_birth1').prop('disabled', false);
+		$('#advance_birth2').prop('disabled', false);
+		$('#advance_death1').prop('disabled', false);
+		$('#advance_death2').prop('disabled', false);
+		$('#advance_birth3').prop('disabled', true);
+		$('#advance_birth3').val('');
+		$('#advance_death3').prop('disabled', true);
+		$('#advance_death3').val('');
+
+
+
+
+		disableStatus1 = false;
+
+	} else {
+		$('#advance_birth1').prop('disabled', true);
+		$('#advance_birth1').val('');
+		$('#advance_birth2').prop('disabled', true);
+		$('#advance_birth2').val('');
+		$('#advance_death1').prop('disabled', true);
+		$('#advance_death1').val('');
+		$('#advance_death2').prop('disabled', true);
+		$('#advance_death2').val('');
+		$('#advance_birth3').prop('disabled', false);
+		$('#advance_death3').prop('disabled', false);
+		disableStatus1 = true;
+
+	}
+
+
+
+});
+
+
+
 
 }
 
-function enable() {
 
 
-    document.getElementById("byear").disabled = false;
-    document.getElementById("dyear").disabled = false;
 
-}
 
 var count = 0;
 
@@ -58,7 +123,7 @@ function showAdminLogin() {
 
 </head>
 
-<body>
+<body onload="init()">
 
   <div class="container">
 
@@ -143,7 +208,7 @@ function showAdminLogin() {
             <div class="form-group ">
 
               <label for="byear" >Birth Year</label>
-              <input type="text"  id="byear" class="form-control" placeholder="E.g.1940" >
+              <input  name="born" type="text"  id="byear" class="form-control" placeholder="E.g.1940" />
 
             </div>
           </div>
@@ -156,7 +221,7 @@ function showAdminLogin() {
             <div class="form-group">
 
               <label for="dyear" >Death Year</label>
-              <input type="text"  id="dyear" class="form-control" placeholder="E.g.2015" >
+              <input name="die" type="text"  id="dyear" class="form-control" placeholder="E.g.2015" >
 
               </div>
             </div>
@@ -186,7 +251,7 @@ function showAdminLogin() {
 
 
         <div class="col-xl-4 col-lg-4 col-md-5 col-sm-4">
-        <button data-toggle="collapse" data-target="#demo" class="btn btn-md btn-outline-primary btn-block btn-space"  type="button">Advanced</button>
+        <button id="anOtherButton" data-toggle="collapse" data-target="#demo" class="btn btn-md btn-outline-primary btn-block btn-space"  type="button">Advanced</button>
         </div>
 
 
@@ -318,9 +383,12 @@ function showAdminLogin() {
 
               <h5>Maybe you want to search in all years beetween birth and death year ?</h5>
 
-              <div class="col-xl-12">
-              <button data-toggle="collapse" data-target="#demo1" class="btn btn-md btn-outline-primary btn-block btn-space"  type="button">More</button>
+              <div class=" row justify-content-center">
+
+              <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+              <button id="outerbutton2" data-toggle="collapse" data-target="#demo1" class="btn btn-md btn-outline-primary btn-block btn-space"  type="button">More</button>
               </div>
+            </div>
 
           </div>
 
@@ -393,6 +461,8 @@ function showAdminLogin() {
 
       <h4 ><strong>Location of the cemetery </strong></h4>
 
+
+
         <div class="row">
 
           <div class="col-xl-1"></div>
@@ -426,6 +496,10 @@ function showAdminLogin() {
 
 
       	</div>
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
