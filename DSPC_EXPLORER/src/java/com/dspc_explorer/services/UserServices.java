@@ -5,7 +5,9 @@
  */
 package com.dspc_explorer.services;
 
+import com.dspc_explorer.Daos.RegistrarDao;
 import com.dspc_explorer.Daos.UserDao;
+import com.dspc_explorer.Dtos.Registrar;
 import com.dspc_explorer.Dtos.Users;
 import com.dspc_explorer.logs.Logging;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
@@ -103,6 +105,10 @@ public class UserServices {
     public List<Users> getAllUsers() {
         UserDao userdao = new UserDao();
         return (ArrayList<Users>) userdao.getAllUsers();
+    }
+     public List<Registrar> getAllRegistrar() {
+        RegistrarDao registrarDao = new RegistrarDao();
+        return (ArrayList<Registrar>) registrarDao.getAllRegistar();
     }
 
     public boolean update(Users user) {

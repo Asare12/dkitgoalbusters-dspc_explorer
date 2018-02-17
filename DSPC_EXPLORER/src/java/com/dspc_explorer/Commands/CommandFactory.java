@@ -17,14 +17,14 @@ public class CommandFactory {
         //Instantiate the required Command object...
         if (actionString.equalsIgnoreCase("login")) {
             command = new LoginUserCommand();
-        } else if (actionString.equalsIgnoreCase("register")) {
-            //command = new RegisterUserCommand();
+        } else if (actionString.equalsIgnoreCase("manageRegistrar")) {
+            command = new ManageRegistrarCommand();
         } else if (actionString.equalsIgnoreCase("update")) {
             //command = new UpdateUserProfileCommand();
         } else if (actionString.equalsIgnoreCase("logout")) {
             //command = new LogoutUserCommand();
-        } else if (actionString.equalsIgnoreCase("manageUsers")) {
-            //command = new ManageUsersCommand();
+        } else if (actionString.equalsIgnoreCase("something")) {
+            //command = new ManageRegistrarCommand();
         } else if (actionString.equalsIgnoreCase("delete")) {
             //command = new DeleteUserCommand();
         } else if (actionString.equalsIgnoreCase("changePassword")) {

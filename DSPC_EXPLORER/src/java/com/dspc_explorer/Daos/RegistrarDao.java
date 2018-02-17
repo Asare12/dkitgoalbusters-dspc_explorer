@@ -9,9 +9,11 @@ import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Registrar;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
