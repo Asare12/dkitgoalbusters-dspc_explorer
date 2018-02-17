@@ -6,6 +6,10 @@
 <%
     String userName = (String) request.getParameter("user");
 %>
+
+        <script src="js/sadScript.js"></script>
+
+
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,7 +49,7 @@
                  <li class="dropdown" onclick="makeActive(this); return false;">
                       <a href="" class="dropdown-toggle" data-toggle="dropdown" href="">Admin Services<b class="caret"></b></a>
                     <ul class="dropdown-menu nav">
-                        <li onclick="manageUsers(); return false;"><a href="">User Management</a></li>
+                        <li onclick="manageRegistrar();"><a href="">Registrar Management</a></li>
                         <li onclick=" return false"><a href="">blah</a></li>
                         <li onclick="return false"><a href="">blah blah</a></li>
                         <li onclick="return false"><a href="">blah blah blah</a></li>
@@ -57,7 +61,7 @@
                 <li class="dropdown" onclick="makeActive(this); return false;">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Welcome! <%=userName%><b class="caret"></b></a>
                     <ul class="dropdown-menu nav">
-                        <li onclick="servletLoadFile('userupdate.jsp', this); return false;"><a href="">Profile</a></li>
+                        <li onclick="loadFile('userupdate.jsp', this); return false;"><a href="">Profile</a></li>
                         <li onclick="servletLoadFile('UserChangePassword.jsp', this); return false;"><a href="">Reset Password</a></li>
                         <li onclick="logout(); return false;"><a href="">Logout</a></li>
                     </ul>

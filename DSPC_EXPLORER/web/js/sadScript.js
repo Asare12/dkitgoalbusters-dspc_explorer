@@ -19,7 +19,7 @@ var ajaxResponseText = "";
 var userList;
 var activeUser;
 var oldActiveUser;
-var tmpUserList=[];
+var tmpUserList = [];
 
 function loadFile(link, calledFrom) {
     clearMessage();
@@ -255,8 +255,8 @@ function setCaptcha(form)
 
 function deleteUser(userIDArry)
 {
-    
-    userIdJsonString=JSON.stringify(userIDArry);
+
+    userIdJsonString = JSON.stringify(userIDArry);
     alert(userIdJsonString);
     $.ajax({
         url: 'WebActionServlet',
@@ -406,7 +406,7 @@ function manageUsers()
         success:
                 function (responseText) {
                     // msg is the response you got from the server!
-                   // $("#message").html("");
+                    // $("#message").html("");
                     $("#ajaxContainer").html(responseText);
                     if (sessionActive === false || sessionActive === 'false')
                     {
@@ -419,6 +419,34 @@ function manageUsers()
         }
     });
 }
+
+function manageRegistrar()
+{
+    //alert("ManageUsers");
+    //$("#message").html("Loading... ");
+    $.ajax({
+        async: false,
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: {action: 'manageRegistrar'},
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    // $("#message").html("");
+                    $("#ajaxContainer").html(responseText);
+                    if (sessionActive === false || sessionActive === 'false')
+                    {
+                        loadNavigation("StandardNavigation.jsp", null);
+                        sessionActive = true;
+                    }
+                },
+        error: function () {
+            $("#message").html("Registrar management Ajax failed");
+        }
+    });
+}
+
+
 function findUserInArray(userArray, userId)
 {
     for (var user in userArray)
@@ -451,7 +479,7 @@ function updateUserProfile(form)
     activeUser.address = $("#Address").val();
     activeUser.town = $("#Town").val();
     activeUser.state = $("#State").val();
-      
+
     activeUser.country = $("#Country").val();
     activeUser.postCode = $("#Postcode").val();
     activeUser.phone1 = $("#Hnumber").val();

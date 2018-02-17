@@ -18,7 +18,7 @@
         <!--<link rel="stylesheet" href="css/layout.css"/>-->
         <link href="css/SADStyles.css" rel="stylesheet">
         <link href="css/mycss.css" rel="stylesheet">
-        <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+        
         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
 
 
@@ -119,7 +119,6 @@
 
 
 
-    <body>
     <body onload="processAttribute();
             return false;">
 
@@ -155,5 +154,4 @@
         </script>
 
     </body>
-</body>
 </html>
