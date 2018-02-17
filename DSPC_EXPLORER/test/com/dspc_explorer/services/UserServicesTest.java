@@ -24,7 +24,7 @@ public class UserServicesTest {
      */
     @Test
     public void testRegister() throws Exception {
-        System.out.println("register");
+       System.out.println("register");
         String enteredUserName = "abdulofficial@icloud.com";
         String enteredPassword = "Password";
         int userType = 1;
@@ -32,8 +32,6 @@ public class UserServicesTest {
         boolean expResult = true;
         boolean result = instance.register(enteredUserName, enteredPassword, userType);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
     }
 
     /**
