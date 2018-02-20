@@ -5,11 +5,12 @@
  */
 package com.dspc_explorer.Commands;
 
-import com.dspc_explorer.Dtos.Registrar;
+import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Users;
 import com.dspc_explorer.services.GeneralServices;
 import com.dspc_explorer.services.UserServices;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import static org.apache.logging.log4j.web.WebLoggerContextUtils.getServletConte
  *
  * @author Abdul
  */
-public class ManageRegistrarCommand implements Command {
+public class ManageGraveOwnerCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -37,27 +38,30 @@ public class ManageRegistrarCommand implements Command {
             if (user != null) {
                 if (user.getUserType() == 0) {
                     UserServices userservice = new UserServices();
-                    List<Registrar> list = (ArrayList<Registrar>) userservice.getAllRegistrar();
+                    List<Graveowner> list = (ArrayList<Graveowner>) userservice.getAllGraveOwner();
                     GeneralServices generalService = new GeneralServices();
                     generalService.printArrayList((ArrayList) list);
-                    //String jsonStringUserList = new Gson().toJson(list);
-                    //System.out.println(jsonStringUserList);
+                   
+                    String jsonStringUserList = new Gson().toJson(list,Graveowner.class);
+                    
+                    
+                    System.out.println(jsonStringUserList);
                     if (list != null) {
                         session.setAttribute("list", list);
-                        //session.setAttribute("jsonStringUserList", jsonStringUserList);
+                        session.setAttribute("jsonStringUserList", jsonStringUserList);
                         session.setAttribute("status", 0);
                         session.setAttribute("statusMessage", "List Users success");
-                        dispatcher = getServletContext().getRequestDispatcher("ManageRegistrars.jsp");
+                        dispatcher = getServletContext().getRequestDispatcher("ManageGraveOwner.jsp");
                     } else {
                         System.out.println("Empty List");
                         session.setAttribute("status", 1);
                         session.setAttribute("statusMessage", "List Users service failed or No users in database");
-                        dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
+                        dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
                     }
                 } else {
                     session.setAttribute("status", 2);
                     session.setAttribute("statusMessage", "No valid user logged in (Need Admin rights for this action)");
-                    dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
+                    dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
 
                 }
 

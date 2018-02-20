@@ -113,6 +113,7 @@ public class RegistrarDao implements RegistrarDaoInterface {
 
             tx = session.beginTransaction();
             Criteria criteria = session.createCriteria(Registrar.class);
+            criteria.setFetchMode("graveowner", FetchMode.JOIN);
             List<Registrar> registrarList = criteria.list();
 
             tx.commit();

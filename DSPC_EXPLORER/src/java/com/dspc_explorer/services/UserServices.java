@@ -5,8 +5,10 @@
  */
 package com.dspc_explorer.services;
 
+import com.dspc_explorer.Daos.GraveOwnerDao;
 import com.dspc_explorer.Daos.RegistrarDao;
 import com.dspc_explorer.Daos.UserDao;
+import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Registrar;
 import com.dspc_explorer.Dtos.Users;
 import com.dspc_explorer.logs.Logging;
@@ -109,6 +111,11 @@ public class UserServices {
      public List<Registrar> getAllRegistrar() {
         RegistrarDao registrarDao = new RegistrarDao();
         return (ArrayList<Registrar>) registrarDao.getAllRegistar();
+    }
+     
+        public List<Graveowner> getAllGraveOwner() {
+        GraveOwnerDao graveOwnerDao = new GraveOwnerDao();
+        return (ArrayList<Graveowner>) graveOwnerDao.getAllgraveOwners();
     }
 
     public boolean update(Users user) {
