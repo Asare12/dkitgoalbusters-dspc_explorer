@@ -57,7 +57,7 @@ $('#anOtherButton').click(function(){
 
 $('#outerbutton2').click(function(){
 
-
+//change to test with...
 	if (disableStatus1) {
 		$('#advance_birth1').prop('disabled', false);
 		$('#advance_birth2').prop('disabled', false);
