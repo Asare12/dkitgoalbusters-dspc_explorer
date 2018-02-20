@@ -30,7 +30,7 @@
 		}
 	});
 	$('[data-action="filter"]').filterTable();
-})(jQuery);
+})();
 
 $(function(){
     // attach table filter plugin to inputs
