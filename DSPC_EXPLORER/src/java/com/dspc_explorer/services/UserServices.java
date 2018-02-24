@@ -23,6 +23,7 @@ import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKeyFactory;
@@ -108,14 +109,27 @@ public class UserServices {
         UserDao userdao = new UserDao();
         return (ArrayList<Users>) userdao.getAllUsers();
     }
-     public List<Registrar> getAllRegistrar() {
+
+    public List<Registrar> getAllRegistrar() {
         RegistrarDao registrarDao = new RegistrarDao();
         return (ArrayList<Registrar>) registrarDao.getAllRegistar();
     }
-     
-        public List<Graveowner> getAllGraveOwner() {
+
+    public List<Graveowner> getAllGraveOwner() {
         GraveOwnerDao graveOwnerDao = new GraveOwnerDao();
         return (ArrayList<Graveowner>) graveOwnerDao.getAllgraveOwners();
+    }
+
+    public Registrar getRegById(int id) {
+        RegistrarDao registrarDao = new RegistrarDao();
+        Registrar registrar =  registrarDao.getRegistrarbyRegId(id);
+
+        if (registrar != null) {
+            return registrar;
+        } else {
+            return null;
+        }
+
     }
 
     public boolean update(Users user) {
@@ -218,5 +232,4 @@ public class UserServices {
 
     }
 
-   
 }

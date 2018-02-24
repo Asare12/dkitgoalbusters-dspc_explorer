@@ -74,7 +74,7 @@ public class Registrar  implements java.io.Serializable {
         this.regId = regId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="graveId", nullable=false)
     public Graveowner getGraveowner() {
         return this.graveowner;

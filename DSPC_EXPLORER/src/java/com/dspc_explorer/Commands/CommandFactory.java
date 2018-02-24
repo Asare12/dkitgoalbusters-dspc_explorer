@@ -19,8 +19,8 @@ public class CommandFactory {
             command = new LoginUserCommand();
         } else if (actionString.equalsIgnoreCase("manageRegistrar")) {
             command = new ManageRegistrarCommand();
-        } else if (actionString.equalsIgnoreCase("update")) {
-            //command = new UpdateUserProfileCommand();
+        } else if (actionString.equalsIgnoreCase("modifyReg")) {
+            command = new ModifyRegistrarCommand();
         } else if (actionString.equalsIgnoreCase("logout")) {
             //command = new LogoutUserCommand();
         } else if (actionString.equalsIgnoreCase("something")) {

@@ -7,6 +7,7 @@ package com.dspc_explorer.Daos;
 
 import com.dspc_explorer.Dtos.Registrar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *

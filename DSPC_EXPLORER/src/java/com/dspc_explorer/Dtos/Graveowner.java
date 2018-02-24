@@ -74,7 +74,7 @@ public class Graveowner  implements java.io.Serializable {
         this.graveId = graveId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="sectionId", nullable=false)
     public Section getSection() {
         return this.section;
@@ -164,7 +164,7 @@ public class Graveowner  implements java.io.Serializable {
         this.graveImage = graveImage;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="graveowner")
+@OneToMany(fetch=FetchType.EAGER, mappedBy="graveowner")
     public Set<Registrar> getRegistrars() {
         return this.registrars;
     }
@@ -173,6 +173,7 @@ public class Graveowner  implements java.io.Serializable {
         this.registrars = registrars;
     }
 
+    
 
 
 
