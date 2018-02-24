@@ -289,6 +289,24 @@ function modifyUser(userID)
         }
     });
 }
+
+function modifyReg(userID)
+{
+    var user = findUserInArray(userList, userID.value);
+    $.ajax({
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: {action: 'modifyReg', userId: userID.value},
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    $("#modifyRegModal").html(responseText);
+                },
+        error: function () {
+            $("#message").html("modify User Ajax Call Failed");
+        }
+    });
+}
 function fileUpload(form)
 {
     $("#imgContainer").html("Loading...");
