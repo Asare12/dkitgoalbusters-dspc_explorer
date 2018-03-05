@@ -261,7 +261,7 @@ function deleteUser(userIDArry)
     $.ajax({
         url: 'WebActionServlet',
         type: 'POST',
-        data: {action: 'delete', userIdList: userIdJsonString},
+        data: {action: 'delete', deleteId: userIdJsonString},
         success:
                 function (responseText) {
                     // msg is the response you got from the server!
@@ -292,7 +292,7 @@ function modifyUser(userID)
 
 function modifyReg(userID)
 {
-    var user = findUserInArray(userList, userID.value);
+    //var user = findUserInArray(userList, userID.value);
     $.ajax({
         url: 'WebActionServlet',
         type: 'POST',

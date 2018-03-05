@@ -56,12 +56,14 @@ public class RegistrarDao implements RegistrarDaoInterface {
     }
 
     @Override
-    public boolean deleteRegistrar(Registrar registrar) {
+    public boolean deleteRegistrar(int regId) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
+            Registrar registrar = new Registrar();
+            registrar.setRegId(regId);
             if (session != null) {
-                session.save(registrar);
+                session.delete(registrar);
                 tx.commit();
                 return true;
             }

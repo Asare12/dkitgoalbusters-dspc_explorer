@@ -44,13 +44,12 @@ public class ModifyRegistrarCommand implements Command{
             }
 
         } catch (IOException ex) {
-            Logger.getLogger(ModifyRegistrarCommand.class.getName()).log(Level.SEVERE, null, ex);
-            session.setAttribute("status", 4);
-            session.setAttribute("statusMessage", ex.getMessage());
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
             try {
-                dispatcher.forward(request, response);
-            } catch (ServletException | IOException ex1) {
+                Logger.getLogger(ModifyRegistrarCommand.class.getName()).log(Level.SEVERE, null, ex);
+                session.setAttribute("status", 4);
+                session.setAttribute("statusMessage", ex.getMessage());
+                response.sendRedirect("ProcessResult.jsp");
+            } catch (IOException ex1) {
                 Logger.getLogger(ModifyRegistrarCommand.class.getName()).log(Level.SEVERE, null, ex1);
             }
         } catch (NullPointerException | NumberFormatException e) {

@@ -26,7 +26,7 @@ public class CommandFactory {
         } else if (actionString.equalsIgnoreCase("something")) {
             //command = new ManageRegistrarCommand();
         } else if (actionString.equalsIgnoreCase("delete")) {
-            //command = new DeleteUserCommand();
+            command = new DeleteRegistrarCommand();
         } else if (actionString.equalsIgnoreCase("changePassword")) {
            // command = new ChangePasswordCommand();
         } else if (actionString.equalsIgnoreCase("verifyEmail")) {
@@ -35,7 +35,7 @@ public class CommandFactory {
             //command = new ResendVerificationMailCommand();
         }else if(actionString.equalsIgnoreCase("modify")){
             //command = new ModifyUserCommand();
-        }else if(actionString.equalsIgnoreCase("addUsers")){
+        }else if(actionString.equalsIgnoreCase("addRegistrar")){
             //command = new CreateUserCommand();
         }
         //Return the instantiated Command object to the calling code...

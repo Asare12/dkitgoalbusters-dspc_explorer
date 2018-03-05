@@ -17,7 +17,7 @@ public interface RegistrarDaoInterface {
     
     public boolean createRegistrar(Registrar registrar);
 
-    public boolean deleteRegistrar(Registrar registrar);
+    public boolean deleteRegistrar(int regId);
 
     public boolean updateRegistrar(Registrar registrar);
 

@@ -22,6 +22,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -61,6 +62,27 @@ public class UserServices {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
         }
         return false;
+    }
+
+    public boolean createRegistrar(int graveId, String regFirstName, String regMiddleName, String regLastName, String regSex, String regAge, String regReligion, String regOccupation, String regDeathLocation, String regMarriageStatus, Date regdeathDate, Date regburialDate) {
+        Registrar registrar = new Registrar();
+        Graveowner graveowner = new Graveowner();
+        graveowner.setGraveId(graveId);
+        registrar.setGraveowner(graveowner);
+        registrar.setRegFirstName(regFirstName);
+        registrar.setRegMiddleName(regMiddleName);
+        registrar.setRegLastName(regLastName);
+        registrar.setRegSex(regSex);
+        registrar.setRegAge(regAge);
+        registrar.setRegReligion(regReligion);
+        registrar.setRegOccupation(regOccupation);
+        registrar.setRegMarriageStatus(regMarriageStatus);
+        registrar.setRegDeathLocation(regDeathLocation);
+        registrar.setRegdeathDate(regdeathDate);
+        registrar.setRegburialDate(regburialDate);
+
+        RegistrarDao registrarDao = new RegistrarDao();
+        return registrarDao.createRegistrar(registrar);
     }
 
     /**
@@ -122,7 +144,7 @@ public class UserServices {
 
     public Registrar getRegById(int id) {
         RegistrarDao registrarDao = new RegistrarDao();
-        Registrar registrar =  registrarDao.getRegistrarbyRegId(id);
+        Registrar registrar = registrarDao.getRegistrarbyRegId(id);
 
         if (registrar != null) {
             return registrar;
@@ -158,6 +180,11 @@ public class UserServices {
     public boolean delete(int userId) {
         UserDao userdao = new UserDao();
         return userdao.deleteUser(userId);
+    }
+
+    public boolean deleteRegistrar(int regId) {
+        RegistrarDao registrarDao = new RegistrarDao();
+        return registrarDao.deleteRegistrar(regId);
     }
 
     /**

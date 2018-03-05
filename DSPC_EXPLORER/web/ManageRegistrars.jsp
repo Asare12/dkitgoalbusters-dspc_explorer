@@ -21,7 +21,7 @@
     });
 </script>
 <% String data = (String) request.getSession().getAttribute("jsonStringUserList");
-   List<Registrar> list = (List<Registrar>) request.getSession().getAttribute("list");
+    List<Registrar> list = (List<Registrar>) request.getSession().getAttribute("list");
 %>
 
 <script>
@@ -78,7 +78,7 @@
 
 
 <table id="example" class="display" cellspacing="0" width="100%">
-  
+
     <thead>
         <tr>
             <th>First Name</th>
@@ -87,10 +87,11 @@
             <th>Death Location</th>
             <th>Death Date</th>
             <th>Burial Date</th>
-            <th>Edit</th>
+            <th>Edit</th>         
+            <th>Delete </th>
         </tr>
     </thead>
-    
+
     <tfoot>
         <tr>
             <th>First Name</th>
@@ -100,26 +101,32 @@
             <th>Death Date</th>
             <th>Burial Date</th>
             <th>Edit</th>
+            <th>Delete </th>
+
         </tr>
     </tfoot>
     <tbody id="tableBody">
 
-          <%if(list.size() >0 && list != null){ %>   
-        <% for(Registrar reg : list){%>
-        
+        <%if (list.size() > 0 && list != null) { %>   
+        <% for (Registrar reg : list) {
+                int userId = reg.getRegId();
+                int deleteId = reg.getRegId();
+        %>
+
         <tr>
             <td><%=reg.getRegFirstName()%></td>
             <td><%=reg.getRegLastName()%></td>
             <td><%=reg.getRegAge()%></td>
-            <td><%=reg.getRegDeathLocation() %> </td>
+            <td><%=reg.getRegDeathLocation()%> </td>
             <td><%=reg.getRegdeathDate()%></td>
-            <td><%=reg.getRegburialDate() %></td>
-            <td class="text-center" id="<%=reg.getRegId()%>" onclick="modifyReg(this); return false;"><a href="modifyReg.jsp"  data-toggle="modal" data-target="#myRegModal" ><samp class="glyphicon glyphicon-edit "></samp> </td>
-            
+            <td><%=reg.getRegburialDate()%></td>
+            <td class="text-center" id="<%=userId%>" onclick="modifyReg(this); return false;"><a href="modifyReg.jsp"  data-toggle="modal" data-target="#myRegModal" ><samp class="glyphicon glyphicon-edit " name="delete" value="<%=userId%>" method="POST"></samp> </td>
+            <td class="text-center"><a href=WebActionServlet/delete?id=<%=deleteId%>><samp class="glyphicon glyphicon-remove"></samp></td>
+
         </tr>
 
         <%}
-}%>
+            }%>
     </tbody>
 </table>
 
@@ -146,37 +153,57 @@
                 <div class="modal-body">
                     <form id="signupform" role="form" method="POST" onsubmit="addGraveOwner(this); return false;"><!--method defined in ManageUsers.jsp-->
                         <div class="form-group">
-                            <label for="graverefcode">Grave Ref Code</label>
-                            <input type="graverefcode" class="form-control" name="graverefcode" placeholder="Enter Reference Code" required>
+                            <label for="firstname">First Name</label>
+                            <input type="firstname" class="form-control" name="firstname" placeholder="First Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="graveowner">Owner Name</label>
-                            <input type="name" class="form-control" name="name" placeholder="Grave Owner Name..">
+                            <label for="Middlename">Middle Name</label>
+                            <input type="middlename" class="form-control" name="middlename" placeholder="Enter Middle name(Optional)">
                         </div>
                         <div class="form-group">
-                            <label for="address">Owner Address</label>
-                            <input type="address" class="form-control" name="address" placeholder="Grave Owner Address">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dateopened">Date Opened</label>
-                            <input type="dateopened" class="form-control" name="dateopened" placeholder="Date Opened">
+                            <label for="Lastname">Last Name</label>
+                            <input type="lastname" class="form-control" name="lastname" placeholder="Enter Last Name">
                         </div>
 
                         <div class="form-group">
-                            <label for="row">Grave Row</label>
+                            <label for="sex">Sex</label>
+                            <input type="sex" class="form-control" name="sex" placeholder=" 'Male' or 'Female' ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="row">Age</label>
                             <input type="row" class="form-control" name="row" placeholder="Enter The row ">
                         </div>
 
                         <div class="form-group">
-                            <label for="depth">Grave Depth</label>
+                            <label for="depth">Religion</label>
                             <input type="depth" class="form-control" name="depth" placeholder="Enter The depth ">
                         </div>
 
-                        <input type="hidden" name="action" value="addGraveOwner">
+                        <div class="form-group">
+                            <label for="depth">Occupation</label>
+                            <input type="depth" class="form-control" name="depth" placeholder="Enter The depth ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="depth">Death Location</label>
+                            <input type="depth" class="form-control" name="depth" placeholder="Enter The depth ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="depth">Death Date</label>
+                            <input type="depth" class="form-control" name="depth" placeholder="Enter The depth ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="depth">Burial Date</label>
+                            <input type="depth" class="form-control" name="depth" placeholder="Enter The depth ">
+                        </div>
+
+                        <input type="hidden" name="action" value="addRegistrar">
                         <div class="form-group">
                             <!-- Button -->                                        
-                            <button type="submit" class="btn btn-default">Add Grave Owner</button>
+                            <button type="submit" class="btn btn-default">Add Registrar/Deceased</button>
                         </div>
                     </form>
                 </div>
@@ -197,9 +224,9 @@
 
             <!-- Modal content-->
             <div class="modal-content">
-                
+
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
