@@ -11,9 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Administrator Control Page</title>
-
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <!-- Bootstrap Core CSS -->
-
+        
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!--<link rel="stylesheet" href="css/layout.css"/>-->
         <link href="css/SADStyles.css" rel="stylesheet">
@@ -64,6 +64,15 @@
                     } else if (userType === 1) {
                         if (firstName === null || firstName === 'null')
                         {
+                            loadNavigation("GravediggerNavigation.jsp", userName);
+                        } else {
+                            loadNavigation("GravediggerNavigation.jsp", firstName);
+                        }
+                        loadFile("GravediggerHome.jsp");
+                    }
+                    else if (userType === 2) {
+                        if (firstName === null || firstName === 'null')
+                        {
                             loadNavigation("UserNavigation.jsp", userName);
                         } else {
                             loadNavigation("UserNavigation.jsp", firstName);
@@ -73,7 +82,7 @@
                 } else
                 {
                     loadNavigation("StandardNavigation.jsp", null);
-                    loadFile("home.html");
+                    loadFile("landing_page.html");
                 }
                 if (action === 'verifyemail')
                 {
