@@ -74,7 +74,7 @@ public class Registrar  implements java.io.Serializable {
         this.regId = regId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="graveId", nullable=false)
     public Graveowner getGraveowner() {
         return this.graveowner;
@@ -194,7 +194,13 @@ public class Registrar  implements java.io.Serializable {
         this.regburialDate = regburialDate;
     }
 
+    @Override
+    public String toString() {
+        return "Registrar{" + "regId=" + regId + ", graveowner=" + graveowner + ", regFirstName=" + regFirstName + ", regMiddleName=" + regMiddleName + ", regLastName=" + regLastName + ", regSex=" + regSex + ", regAge=" + regAge + ", regReligion=" + regReligion + ", regOccupation=" + regOccupation + ", regDeathLocation=" + regDeathLocation + ", regMarriageStatus=" + regMarriageStatus + ", regdeathDate=" + regdeathDate + ", regburialDate=" + regburialDate + '}';
+    }
 
+
+    
 
 
 }

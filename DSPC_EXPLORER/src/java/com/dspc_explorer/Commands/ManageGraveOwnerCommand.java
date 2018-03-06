@@ -5,15 +5,15 @@
  */
 package com.dspc_explorer.Commands;
 
-import com.dspc_explorer.Dtos.Registrar;
+import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Users;
 import com.dspc_explorer.services.GeneralServices;
 import com.dspc_explorer.services.UserServices;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -27,45 +27,41 @@ import static org.apache.logging.log4j.web.WebLoggerContextUtils.getServletConte
  *
  * @author Abdul
  */
-public class ManageRegistrarCommand implements Command {
+public class ManageGraveOwnerCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true);
         Users user = (Users) request.getSession().getAttribute("user");
         RequestDispatcher dispatcher;
-
-        String nextJSP = "";
         try {
             if (user != null) {
                 if (user.getUserType() == 0) {
                     UserServices userservice = new UserServices();
-                    List<Registrar> list = (ArrayList<Registrar>) userservice.getAllRegistrar();
+                    List<Graveowner> list = (ArrayList<Graveowner>) userservice.getAllGraveOwner();
                     GeneralServices generalService = new GeneralServices();
                     generalService.printArrayList((ArrayList) list);
-                    String jsonStringUserList = list.toString();
-                    String jsonString = new Gson().toJson(jsonStringUserList);
-                    System.out.println("The Data from string in ManageRegistrarCommand" + jsonStringUserList);
-                    if (list.size() >0 ) {
+                   
+                    String jsonStringUserList = new Gson().toJson(list,Graveowner.class);
+                    
+                    
+                    System.out.println(jsonStringUserList);
+                    if (list != null) {
                         session.setAttribute("list", list);
-                        session.setAttribute("jsonStringUserList", jsonString);
+                        session.setAttribute("jsonStringUserList", jsonStringUserList);
                         session.setAttribute("status", 0);
                         session.setAttribute("statusMessage", "List Users success");
-                        nextJSP = "ManageRegistrars.jsp";
-                        response.sendRedirect(nextJSP);
-//                        dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-//                        dispatcher.forward(request, response);
-
+                        dispatcher = getServletContext().getRequestDispatcher("ManageGraveOwner.jsp");
                     } else {
                         System.out.println("Empty List");
                         session.setAttribute("status", 1);
                         session.setAttribute("statusMessage", "List Users service failed or No users in database");
-                        dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
+                        dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
                     }
                 } else {
                     session.setAttribute("status", 2);
                     session.setAttribute("statusMessage", "No valid user logged in (Need Admin rights for this action)");
-                    dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
+                    dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
 
                 }
 
@@ -74,8 +70,9 @@ public class ManageRegistrarCommand implements Command {
                 session.setAttribute("statusMessage", "Session expired.. ");
                 dispatcher = getServletContext().getRequestDispatcher("/SessionExpired.jsp");
             }
+            dispatcher.forward(request, response);
 
-        } catch (IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(LoginUserCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

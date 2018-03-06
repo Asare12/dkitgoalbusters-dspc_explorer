@@ -261,7 +261,7 @@ function deleteUser(userIDArry)
     $.ajax({
         url: 'WebActionServlet',
         type: 'POST',
-        data: {action: 'delete', userIdList: userIdJsonString},
+        data: {action: 'delete', deleteId: userIdJsonString},
         success:
                 function (responseText) {
                     // msg is the response you got from the server!
@@ -283,6 +283,24 @@ function modifyUser(userID)
                 function (responseText) {
                     // msg is the response you got from the server!
                     $("#modifyUserModal").html(responseText);
+                },
+        error: function () {
+            $("#message").html("modify User Ajax Call Failed");
+        }
+    });
+}
+
+function modifyReg(userID)
+{
+    //var user = findUserInArray(userList, userID.value);
+    $.ajax({
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: {action: 'modifyReg', userId: userID.value},
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    $("#modifyRegModal").html(responseText);
                 },
         error: function () {
             $("#message").html("modify User Ajax Call Failed");

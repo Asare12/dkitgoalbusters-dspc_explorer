@@ -8,6 +8,9 @@ package com.dspc_explorer.Daos;
 import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Registrar;
 import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
@@ -53,12 +56,14 @@ public class RegistrarDao implements RegistrarDaoInterface {
     }
 
     @Override
-    public boolean deleteRegistrar(Registrar registrar) {
+    public boolean deleteRegistrar(int regId) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
+            Registrar registrar = new Registrar();
+            registrar.setRegId(regId);
             if (session != null) {
-                session.save(registrar);
+                session.delete(registrar);
                 tx.commit();
                 return true;
             }
@@ -113,6 +118,7 @@ public class RegistrarDao implements RegistrarDaoInterface {
 
             tx = session.beginTransaction();
             Criteria criteria = session.createCriteria(Registrar.class);
+            criteria.setFetchMode("graveowner", FetchMode.JOIN);
             List<Registrar> registrarList = criteria.list();
 
             tx.commit();
@@ -132,4 +138,32 @@ public class RegistrarDao implements RegistrarDaoInterface {
         }
     }
 
+    public Registrar getRegistrarbyRegId(int UserId) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            // here get object
+            Criteria criteria = session.createCriteria(Registrar.class);
+            criteria.setFetchMode("graveowner", FetchMode.JOIN);
+
+            criteria.add(Restrictions.idEq(UserId));
+            List<Registrar> list = criteria.list();// get the list of result obtained by given criteria
+            if (list != null && list.size() > 0) {
+                return list.get(0);
+            }
+        } catch (HibernateException ex) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            Logger.getLogger("con").log(Level.SEVERE, "Exception: {0}", ex.getMessage());
+            ex.printStackTrace(System.err);
+            System.out.println("Login Exception" + ex.getMessage());
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return null;
+
+    }
 }

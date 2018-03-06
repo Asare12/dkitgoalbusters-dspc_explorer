@@ -7,6 +7,7 @@ package com.dspc_explorer.Daos;
 
 import com.dspc_explorer.Dtos.Registrar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -16,7 +17,7 @@ public interface RegistrarDaoInterface {
     
     public boolean createRegistrar(Registrar registrar);
 
-    public boolean deleteRegistrar(Registrar registrar);
+    public boolean deleteRegistrar(int regId);
 
     public boolean updateRegistrar(Registrar registrar);
 
