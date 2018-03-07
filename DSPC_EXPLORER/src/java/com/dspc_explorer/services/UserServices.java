@@ -22,7 +22,9 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKeyFactory;
@@ -60,6 +62,27 @@ public class UserServices {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
         }
         return false;
+    }
+
+    public boolean createRegistrar(int graveId, String regFirstName, String regMiddleName, String regLastName, String regSex, String regAge, String regReligion, String regOccupation, String regDeathLocation, String regMarriageStatus, Date regdeathDate, Date regburialDate) {
+        Registrar registrar = new Registrar();
+        Graveowner graveowner = new Graveowner();
+        graveowner.setGraveId(graveId);
+        registrar.setGraveowner(graveowner);
+        registrar.setRegFirstName(regFirstName);
+        registrar.setRegMiddleName(regMiddleName);
+        registrar.setRegLastName(regLastName);
+        registrar.setRegSex(regSex);
+        registrar.setRegAge(regAge);
+        registrar.setRegReligion(regReligion);
+        registrar.setRegOccupation(regOccupation);
+        registrar.setRegMarriageStatus(regMarriageStatus);
+        registrar.setRegDeathLocation(regDeathLocation);
+        registrar.setRegdeathDate(regdeathDate);
+        registrar.setRegburialDate(regburialDate);
+
+        RegistrarDao registrarDao = new RegistrarDao();
+        return registrarDao.createRegistrar(registrar);
     }
 
     /**
@@ -108,14 +131,27 @@ public class UserServices {
         UserDao userdao = new UserDao();
         return (ArrayList<Users>) userdao.getAllUsers();
     }
-     public List<Registrar> getAllRegistrar() {
+
+    public List<Registrar> getAllRegistrar() {
         RegistrarDao registrarDao = new RegistrarDao();
         return (ArrayList<Registrar>) registrarDao.getAllRegistar();
     }
-     
-        public List<Graveowner> getAllGraveOwner() {
+
+    public List<Graveowner> getAllGraveOwner() {
         GraveOwnerDao graveOwnerDao = new GraveOwnerDao();
         return (ArrayList<Graveowner>) graveOwnerDao.getAllgraveOwners();
+    }
+
+    public Registrar getRegById(int id) {
+        RegistrarDao registrarDao = new RegistrarDao();
+        Registrar registrar = registrarDao.getRegistrarbyRegId(id);
+
+        if (registrar != null) {
+            return registrar;
+        } else {
+            return null;
+        }
+
     }
 
     public boolean update(Users user) {
@@ -144,6 +180,11 @@ public class UserServices {
     public boolean delete(int userId) {
         UserDao userdao = new UserDao();
         return userdao.deleteUser(userId);
+    }
+
+    public boolean deleteRegistrar(int regId) {
+        RegistrarDao registrarDao = new RegistrarDao();
+        return registrarDao.deleteRegistrar(regId);
     }
 
     /**
@@ -218,5 +259,4 @@ public class UserServices {
 
     }
 
-   
 }

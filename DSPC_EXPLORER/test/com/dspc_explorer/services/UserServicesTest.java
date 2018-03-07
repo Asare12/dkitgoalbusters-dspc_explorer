@@ -24,7 +24,23 @@ public class UserServicesTest {
      */
     @Test
     public void testRegister() throws Exception {
+       System.out.println("register : Test to see if insert sucessfull");
+       // Test to see if insert sucessfull
+        
+        String enteredUserName = "abdulofficial@icloud.com";
+        String enteredPassword = "Password";
+        int userType = 1;
+        UserServices instance = new UserServices();
+        boolean expResult = true;
+        boolean result = instance.register(enteredUserName, enteredPassword, userType);
+        assertEquals(expResult, result);
+    }
+    
+       @Test
+    public void testRegister2() throws Exception {
        System.out.println("register");
+       // Test to see if insert sucessfull
+        
         String enteredUserName = "abdulofficial@icloud.com";
         String enteredPassword = "Password";
         int userType = 1;

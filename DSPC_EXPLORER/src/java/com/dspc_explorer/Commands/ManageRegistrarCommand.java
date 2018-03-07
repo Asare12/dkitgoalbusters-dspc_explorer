@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -33,6 +34,8 @@ public class ManageRegistrarCommand implements Command {
         HttpSession session = request.getSession(true);
         Users user = (Users) request.getSession().getAttribute("user");
         RequestDispatcher dispatcher;
+
+        String nextJSP = "";
         try {
             if (user != null) {
                 if (user.getUserType() == 0) {
@@ -40,14 +43,19 @@ public class ManageRegistrarCommand implements Command {
                     List<Registrar> list = (ArrayList<Registrar>) userservice.getAllRegistrar();
                     GeneralServices generalService = new GeneralServices();
                     generalService.printArrayList((ArrayList) list);
-                    //String jsonStringUserList = new Gson().toJson(list);
-                    //System.out.println(jsonStringUserList);
-                    if (list != null) {
+                    String jsonStringUserList = list.toString();
+                    String jsonString = new Gson().toJson(jsonStringUserList);
+                    System.out.println("The Data from string in ManageRegistrarCommand" + jsonStringUserList);
+                    if (list.size() >0 ) {
                         session.setAttribute("list", list);
-                        //session.setAttribute("jsonStringUserList", jsonStringUserList);
+                        session.setAttribute("jsonStringUserList", jsonString);
                         session.setAttribute("status", 0);
                         session.setAttribute("statusMessage", "List Users success");
-                        dispatcher = getServletContext().getRequestDispatcher("ManageRegistrars.jsp");
+                        nextJSP = "ManageRegistrars.jsp";
+                        response.sendRedirect(nextJSP);
+//                        dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+//                        dispatcher.forward(request, response);
+
                     } else {
                         System.out.println("Empty List");
                         session.setAttribute("status", 1);
@@ -66,9 +74,8 @@ public class ManageRegistrarCommand implements Command {
                 session.setAttribute("statusMessage", "Session expired.. ");
                 dispatcher = getServletContext().getRequestDispatcher("/SessionExpired.jsp");
             }
-            dispatcher.forward(request, response);
 
-        } catch (ServletException | IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(LoginUserCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
