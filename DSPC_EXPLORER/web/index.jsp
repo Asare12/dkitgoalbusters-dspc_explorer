@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : Index.Jsp
     Created on : 31-Jan-2018, 12:36:46
     Author     : abdul
@@ -13,12 +13,12 @@
         <title>Administrator Control Page</title>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <!-- Bootstrap Core CSS -->
-        
+
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!--<link rel="stylesheet" href="css/layout.css"/>-->
         <link href="css/SADStyles.css" rel="stylesheet">
         <link href="css/mycss.css" rel="stylesheet">
-        
+
         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
 
 
@@ -29,19 +29,19 @@
             function processAttribute()
             {
             <%
-                 Users loggedinUser = (Users) request.getSession().getAttribute("user");
-                 String userName = null;
-                 int userType = -1;
-                 String firstName = null;
+                Users loggedinUser = (Users) request.getSession().getAttribute("user");
+                String userName = null;
+                int userType = -1;
+                String firstName = null;
 
-                 if (loggedinUser != null) {
-                     userName = loggedinUser.getUserName();
-                     userType = loggedinUser.getUserType();
-                     firstName = loggedinUser.getFirstName();
+                if (loggedinUser != null) {
+                    userName = loggedinUser.getUserName();
+                    userType = loggedinUser.getUserType();
+                    firstName = loggedinUser.getFirstName();
 
-                 }
-                 String action = (String) request.getParameter("action");
-                 String statusMessage = (String) request.getSession().getAttribute("statusMessage");
+                }
+                String action = (String) request.getParameter("action");
+                String statusMessage = (String) request.getSession().getAttribute("statusMessage");
             %>
                 userName = "<%=userName%>";
                 userType = -1;
@@ -69,8 +69,15 @@
                             loadNavigation("GravediggerNavigation.jsp", firstName);
                         }
                         loadFile("GravediggerHome.jsp");
-                    }
-                    else if (userType === 2) {
+                    } else if (userType === 2) {
+                        if (firstName === null || firstName === 'null')
+                        {
+                            loadNavigation("registrar_navigation.jsp", userName);
+                        } else {
+                            loadNavigation("registrar_navigation.jsp", firstName);
+                        }
+                        loadFile("registrar_home.jsp");
+                    } else if (userType === 3) {
                         if (firstName === null || firstName === 'null')
                         {
                             loadNavigation("UserNavigation.jsp", userName);
