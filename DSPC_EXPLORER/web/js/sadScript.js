@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -30,7 +30,7 @@ function loadFile(link, calledFrom) {
     $.ajax({
         url: link,
         context: document.body,
-        success: function (responseText) {
+        success: function(responseText) {
             $("#ajaxContainer").html(responseText);
             //$("#ajaxContainer").find("script").each(function (i) {
             // eval($(this).text());
@@ -48,7 +48,7 @@ function storeHtmlToVariable(link, calledFrom)
         async: false,
         url: link,
         context: document.body,
-        success: function (responseText) {
+        success: function(responseText) {
             ajaxResponseText = responseText;
         }
     });
@@ -63,7 +63,7 @@ function servletLoadFile(link, calledFrom) {
         url: 'WebActionServlet',
         context: document.body,
         data: {action: 'loadFile', file: link},
-        success: function (responseText) {
+        success: function(responseText) {
             $("#ajaxContainer").html(responseText);
             //$("#ajaxContainer").find("script").each(function (i) {
             // eval($(this).text());
@@ -87,7 +87,7 @@ function loadNavigation(link, user) {
         data: {user: user},
         type: "POST",
         context: document.body,
-        success: function (responseText) {
+        success: function(responseText) {
             $("#navigation").html(responseText);
         }
     });
@@ -102,7 +102,7 @@ function formAction(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                     //$("#message").find("script").each(function (i) {
@@ -110,7 +110,7 @@ function formAction(form)
                     //});
                     returnvalue = responseText;
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Fail");
         }
     });
@@ -123,11 +123,11 @@ function  callAjax(link, action) {
         data: {action: action},
         type: "POST",
         context: document.body,
-        success: function (responseText) {
+        success: function(responseText) {
             $("#message").html(responseText);
             returnvalue = true;
         },
-        error: function () {
+        error: function() {
             $("#message").html("Failed");
             returnvalue = false;
         }
@@ -153,7 +153,7 @@ function login(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                     //alert(userName + " " + firstName + " " + userType);
@@ -183,7 +183,7 @@ function login(form)
                         // $("#message").html("User Type not valid");
                     }
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Login Ajax call failed Internal Server Problem or Database Connection Failed");
         }
     });
@@ -200,11 +200,11 @@ function registerUser(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Register Ajax Call Failed Internal Server Problem or Database Connection Failed");
         }
     });
@@ -221,11 +221,11 @@ function updateUser(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Update User Ajax Call Failed");
         }
     });
@@ -241,13 +241,13 @@ function setCaptcha(form)
         type: 'POST',
         data: {action: 'setCaptcha'},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                     $(form).find('#captchatext').text("Captcha — What is " + captchaNr1 + " + " + captchaNr2);
                     form.captchainput.pattern = captchaNr1 + captchaNr2;
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Setting Captcha Failed");
         }
     });
@@ -263,11 +263,11 @@ function deleteUser(userIDArry)
         type: 'POST',
         data: {action: 'delete', userIdList: userIdJsonString},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("delete User Ajax Call Failed");
         }
     });
@@ -280,11 +280,11 @@ function modifyUser(userID)
         type: 'POST',
         data: {action: 'modify', userId: userID.value},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#modifyUserModal").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("modify User Ajax Call Failed");
         }
     });
@@ -303,11 +303,11 @@ function fileUpload(form)
         contentType: false,
         processData: false,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("File Upload Ajax Call Failed internal Server or Database Connection Error");
         }
     });
@@ -318,13 +318,13 @@ function loadProfileImage()
 
 }
 
-$("#search").keyup(function () {
+$("#search").keyup(function() {
     var value = this.value.toLowerCase().trim();
 
-    $("table tr").each(function (index) {
+    $("table tr").each(function(index) {
         if (!index)
             return;
-        $(this).find("td").each(function () {
+        $(this).find("td").each(function() {
             var id = $(this).text().toLowerCase().trim();
             var not_found = (id.indexOf(value) == -1);
             $(this).closest('tr').toggle(!not_found);
@@ -343,11 +343,11 @@ function updatePassword(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Update Password Ajax Call Failed");
         }
     });
@@ -365,11 +365,11 @@ function verifyEmail(userID, token)
         type: 'POST',
         data: {action: 'verifyEmail', userName: userID, token: token},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Verify Email Ajax Call Failed");
         }
     });
@@ -385,11 +385,11 @@ function sendVerificationMail(form)
         type: 'POST',
         data: formData,
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     $("#message").html(responseText);
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Send Verification Mail Ajax Call Failed");
         }
     });
@@ -404,7 +404,7 @@ function manageUsers()
         type: 'POST',
         data: {action: 'manageUsers'},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     // $("#message").html("");
                     $("#ajaxContainer").html(responseText);
@@ -414,7 +414,7 @@ function manageUsers()
                         sessionActive = true;
                     }
                 },
-        error: function () {
+        error: function() {
             $("#message").html("User management Ajax failed");
         }
     });
@@ -430,7 +430,7 @@ function manageRegistrar()
         type: 'POST',
         data: {action: 'manageRegistrar'},
         success:
-                function (responseText) {
+                function(responseText) {
                     // msg is the response you got from the server!
                     // $("#message").html("");
                     $("#ajaxContainer").html(responseText);
@@ -440,7 +440,7 @@ function manageRegistrar()
                         sessionActive = true;
                     }
                 },
-        error: function () {
+        error: function() {
             $("#message").html("Registrar management Ajax failed");
         }
     });

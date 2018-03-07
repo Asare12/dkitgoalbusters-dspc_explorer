@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : Suggested_Gravediggers_Page
     Created on : 14-Feb-2018, 15:37:35
     Author     : Asare
@@ -56,7 +56,7 @@
                                     <td>48</td>
                                     <td>11 king street</td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
@@ -64,7 +64,7 @@
                                     <td>69</td>
                                     <td>84 cool dances meadow</td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
@@ -72,7 +72,7 @@
                                     <td>15</td>
                                     <td>43 random keys close</td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
@@ -80,15 +80,15 @@
                                     <td>74</td>
                                     <td>32B dennis apartment</td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
-                                    <td>Frank</td>
+                                    <td>graverefcode</td>
                                     <td>47</td>
                                     <td>10 rice road </td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">6</th>
@@ -96,7 +96,7 @@
                                     <td>86</td>
                                     <td>49 phantom house</td>
                                     <td><button type="button" class="btn btn-success">Accept</button>
-                                    <button type="button" class="btn btn-danger">Decline</button></td>
+                                        <button type="button" class="btn btn-danger">Decline</button></td>
                                 </tr>
                             </tbody>
                             <!--Table body-->
