@@ -121,6 +121,9 @@
                 }
             }
 
+    $(".modal-content").on("hidden.bs.modal", function () {
+        $(".modal-body").html("");
+    });
         </script>
 
 

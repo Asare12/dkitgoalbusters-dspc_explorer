@@ -40,19 +40,19 @@
                   <li class="dropdown" onclick="makeActive(this); return false;">
                       <a href="" class="dropdown-toggle" data-toggle="dropdown" href="">User Services<b class="caret"></b></a>
                     <ul class="dropdown-menu nav">
-                        <li onclick="return false"><a href="">blah</a></li>
-                        <li onclick="return false"><a href="">Blah</a></li>
-                         <li onclick="return false"><a href="">blah</a></li>
-                         <li onclick="return false"><a href="">blah</a></li>
+                        <li onclick="return false"><a href="">Manage Users Account</a></li>
+                        <li onclick="return false"><a href="">Abdul</a></li>
+                         <li onclick="return false"><a href="">Did</a></li>
+                         <li onclick="return false"><a href="">Everything For Project</a></li>
                     </ul>
                 </li>
                  <li class="dropdown" onclick="makeActive(this); return false;">
                       <a href="" class="dropdown-toggle" data-toggle="dropdown" href="">Admin Services<b class="caret"></b></a>
                     <ul class="dropdown-menu nav">
                         <li onclick="manageRegistrar();"><a href="">Registrar Management</a></li>
-                        <li onclick=" return false"><a href="">blah</a></li>
-                        <li onclick="return false"><a href="">blah blah</a></li>
-                        <li onclick="return false"><a href="">blah blah blah</a></li>
+                        <li onclick="manageGraveOwners();"><a href="">Grave Owner Management</a></li>
+                        <li onclick="loadFile('testPage.jsp')"><a href="">Test</a></li>
+                        <li onclick="return false"><a href="">Additional</a></li>
                     </ul>
                 </li>
             </ul>

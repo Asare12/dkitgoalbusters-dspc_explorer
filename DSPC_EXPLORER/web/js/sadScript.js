@@ -210,6 +210,48 @@ function registerUser(form)
     });
 
 }
+
+function addRegistrar(form)
+{
+    var formData = $(form).serialize();
+    alert(formData);
+    //var rating = $(this).val(); //This captures the radio button's value, which ever clicked
+    $.ajax({
+        async: false,
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: formData,
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    $("#message").html(responseText);
+                },
+        error: function () {
+            $("#message").html("Register Ajax Call Failed Internal Server Problem or Database Connection Failed");
+        }
+    });
+
+}
+function modifyRegRecord(form){
+    var formData = $(form).serialize();
+    alert(formData);
+    //var rating = $(this).val(); //This captures the radio button's value, which ever clicked
+    $.ajax({
+        async: false,
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: formData,
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    $("#message").html(responseText);
+                },
+        error: function () {
+            $("#message").html("Register Ajax Call Failed Internal Server Problem or Database Connection Failed");
+        }
+    });
+}
+
 function updateUser(form)
 {
     var formData = $(form).serialize();
@@ -262,6 +304,25 @@ function deleteUser(userIDArry)
         url: 'WebActionServlet',
         type: 'POST',
         data: {action: 'delete', deleteId: userIdJsonString},
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    $("#message").html(responseText);
+                },
+        error: function () {
+            $("#message").html("delete User Ajax Call Failed");
+        }
+    });
+}
+
+function deleteReg(userId)
+{
+
+    alert(userId);
+    $.ajax({
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: {action: 'delete', regId: userId},
         success:
                 function (responseText) {
                     // msg is the response you got from the server!
@@ -463,6 +524,34 @@ function manageRegistrar()
         }
     });
 }
+
+function manageGraveOwners()
+{
+    //alert("ManageUsers");
+    //$("#message").html("Loading... ");
+    $.ajax({
+        async: false,
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: {action: 'manageGraveOwners'},
+        success:
+                function (responseText) {
+                    // msg is the response you got from the server!
+                    // $("#message").html("");
+                    $("#ajaxContainer").html(responseText);
+                    if (sessionActive === false || sessionActive === 'false')
+                    {
+                        loadNavigation("StandardNavigation.jsp", null);
+                        sessionActive = true;
+                    }
+                },
+        error: function () {
+            $("#message").html("GraveOwner management Ajax failed");
+        }
+    });
+}
+
+
 
 
 function findUserInArray(userArray, userId)

@@ -4,11 +4,12 @@
     Author     : Abdul
 --%>
 
+<%@page import="com.dspc_explorer.Dtos.Graveowner"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dspc_explorer.Dtos.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<script src="css/jquery-1.12.4.js"></script>-->
+<script src="css/jquery-1.12.4.js"></script>
 <script src="css/jquery.dataTables.min.js"></script>
 <link href="css/jquery.dataTables.min.css" rel="stylesheet">
 
@@ -21,8 +22,12 @@
     });
 </script>
 
+<% String data = (String) request.getSession().getAttribute("jsonStringUserList");
+    List<Graveowner> list = (List<Graveowner>) request.getSession().getAttribute("list");
+%>
+
 <script>
-    <% List<Users> userList = (List<Users>) request.getSession().getAttribute("list"); %>
+
     var selectedUserIds = [];
     //userList =<%//=request.getSession().getAttribute("jsonStringUserList")%>;
     //registrarList =<%//request.getSession().getAttribute("jsonStringUserList");%>;
@@ -104,32 +109,50 @@
 <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Sex</th>
-            <th>Death Location</th>
-            <th>Death Date</th>
-            <th>Burial Date</th>
-            <th>Edit</th>
+            <th>Grave Number</th>
+            <th>Reference Code</th>
+            <th>Owners Name</th>
+            <th>Date Opened/ Owned</th>
+            <th>Section</th>
+            <th>Edit/Modify</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Sex</th>
-            <th>Death Location</th>
-            <th>Death Date</th>
-            <th>Burial Date</th>
+            <th>Grave Number</th>
+            <th>Reference Code</th>
+            <th>Owners Name</th>
+            <th>Date Opened/ Owned</th>
+            <th>Section</th>
+            <th>Edit/Modify</th>
+            <th>Details</th>
         </tr>
     </tfoot>
-    <tbody id="tableBody" onload="displayUserList(); return false;">
-
-
+    <tbody id="tableBody">
+         <%if (list.size() > 0 && list != null) { 
+                for (Graveowner graveowner : list) {
+            %>  
+        <tr>
+            
+           
+            <td><%=graveowner.getGraveId()%></td>
+            <td><%=graveowner.getGraveRefCode()%></td>
+            <td><%=graveowner.getGraveOwnerName()%></td>
+            <td><%=graveowner.getGraveopenDate()%></td>
+            <td><%=graveowner.getSection().getSectionCode()%></td>
+            <td><samp class="glyphicon glyphicon-edit"></samp></td>
+            <td><samp class="glyphicon glyphicon-eye-open"></samp></td>
+            
+        </tr>
+        <%}
+            }
+        %>
     </tbody>
 </table>
 
-<align align='center'><h2>Admin Options</h2></align>
+
+<div id="loadBtn" class="btn btn-primary" onclick="manageGraveOwners();" >Reload Data/ Up-To-Date</div>
 
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Grave Owner</button>
