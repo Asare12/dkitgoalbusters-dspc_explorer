@@ -37,6 +37,10 @@ public class CommandFactory {
             command = new UpdateRegistrarCommand();
         }else if(actionString.equalsIgnoreCase("addRegistrar")){
             command = new CreateRegistrarCommand();
+        }else if(actionString.equalsIgnoreCase("viewRegistrarDetails")){
+            command = new ViewRegistrarDetailsCommand();
+        }else if(actionString.equalsIgnoreCase("searchRegistrar")){
+            command  = new SearchRegistrarCommand();
         }
         //Return the instantiated Command object to the calling code...
         return command;// may be null
