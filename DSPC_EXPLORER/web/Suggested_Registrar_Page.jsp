@@ -88,7 +88,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
-                                    <td>Frank</td>
+                                    <td>Fgraverefcode</td>
                                     <td>47</td>
                                     <td>10 rice road </td>
                                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View Details</button>
