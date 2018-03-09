@@ -31,12 +31,12 @@ public class CommandFactory {
            // command = new ChangePasswordCommand();
         } else if (actionString.equalsIgnoreCase("verifyEmail")) {
             //command = new VerifyEmailCommand();
-        } else if (actionString.equalsIgnoreCase("resendVerificationMail")) {
-            //command = new ResendVerificationMailCommand();
-        }else if(actionString.equalsIgnoreCase("modify")){
-            //command = new ModifyUserCommand();
+        } else if (actionString.equalsIgnoreCase("manageGraveOwners")) {
+            command = new ManageGraveOwnerCommand();
+        }else if(actionString.equalsIgnoreCase("modRegistrarRecords")){
+            command = new UpdateRegistrarCommand();
         }else if(actionString.equalsIgnoreCase("addRegistrar")){
-            //command = new CreateUserCommand();
+            command = new CreateRegistrarCommand();
         }
         //Return the instantiated Command object to the calling code...
         return command;// may be null

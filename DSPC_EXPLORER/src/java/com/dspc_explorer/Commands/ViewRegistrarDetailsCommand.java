@@ -10,22 +10,18 @@ import com.dspc_explorer.services.UserServices;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import static org.apache.logging.log4j.web.WebLoggerContextUtils.getServletContext;
 
 /**
  *
  * @author abdul
  */
-public class ModifyRegistrarCommand implements Command{
+public class ViewRegistrarDetailsCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        
         UserServices userservice = new UserServices();
         HttpSession session = request.getSession();
         try {
@@ -33,10 +29,10 @@ public class ModifyRegistrarCommand implements Command{
             Registrar registrar = userservice.getRegById(userId);
 
             if (registrar != null) {
-                session.setAttribute("modifyReg", registrar);
+                session.setAttribute("registrar", registrar);
                 session.setAttribute("status", 0);
                 session.setAttribute("statusMessage", "Registrar exist");
-                response.sendRedirect("modifyReg.jsp");
+                response.sendRedirect("ViewRegistrarDetails.jsp");
             } else {
                 session.setAttribute("status", 1);
                 session.setAttribute("statusMessage", "find user Failed.. ");
@@ -62,5 +58,5 @@ public class ModifyRegistrarCommand implements Command{
             }
         }
     }
-    
+
 }

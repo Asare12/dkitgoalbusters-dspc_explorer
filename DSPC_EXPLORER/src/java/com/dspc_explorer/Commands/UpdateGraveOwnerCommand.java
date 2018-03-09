@@ -5,10 +5,18 @@
  */
 package com.dspc_explorer.Commands;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author abdul
  */
-public class UpdateGraveOwnerCommand {
+public class UpdateGraveOwnerCommand implements Command {
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        
+    }
     
 }

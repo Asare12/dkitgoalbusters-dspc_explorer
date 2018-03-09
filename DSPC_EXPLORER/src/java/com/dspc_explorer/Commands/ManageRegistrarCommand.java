@@ -60,12 +60,11 @@ public class ManageRegistrarCommand implements Command {
                         System.out.println("Empty List");
                         session.setAttribute("status", 1);
                         session.setAttribute("statusMessage", "List Users service failed or No users in database");
-                        dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
                     }
                 } else {
                     session.setAttribute("status", 2);
                     session.setAttribute("statusMessage", "No valid user logged in (Need Admin rights for this action)");
-                    dispatcher = getServletContext().getRequestDispatcher("/ProcessResult.jsp");
+                   
 
                 }
 

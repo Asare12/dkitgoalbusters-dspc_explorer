@@ -10,7 +10,6 @@ import com.dspc_explorer.Dtos.Users;
 import com.dspc_explorer.services.GeneralServices;
 import com.dspc_explorer.services.UserServices;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,9 @@ public class ManageGraveOwnerCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true);
         Users user = (Users) request.getSession().getAttribute("user");
-        RequestDispatcher dispatcher;
+        RequestDispatcher dispatcher = null;
+
+        String nextJSP = "";
         try {
             if (user != null) {
                 if (user.getUserType() == 0) {
@@ -41,28 +42,27 @@ public class ManageGraveOwnerCommand implements Command {
                     List<Graveowner> list = (ArrayList<Graveowner>) userservice.getAllGraveOwner();
                     GeneralServices generalService = new GeneralServices();
                     generalService.printArrayList((ArrayList) list);
-                   
-                    String jsonStringUserList = new Gson().toJson(list,Graveowner.class);
-                    
-                    
+
+                    String jsonStringUserList = list.toString();
+                    String jsonString = new Gson().toJson(jsonStringUserList);
+
                     System.out.println(jsonStringUserList);
-                    if (list != null) {
+
+                    if (list.size() > 0) {
                         session.setAttribute("list", list);
-                        session.setAttribute("jsonStringUserList", jsonStringUserList);
+                        session.setAttribute("jsonStringUserList", jsonString);
                         session.setAttribute("status", 0);
-                        session.setAttribute("statusMessage", "List Users success");
-                        dispatcher = getServletContext().getRequestDispatcher("ManageGraveOwner.jsp");
+                        session.setAttribute("statusMessage", "List GraveOwners success");
+                        nextJSP = "ManageGraveOwner.jsp";
+                        response.sendRedirect(nextJSP);
                     } else {
                         System.out.println("Empty List");
                         session.setAttribute("status", 1);
-                        session.setAttribute("statusMessage", "List Users service failed or No users in database");
-                        dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
+                        session.setAttribute("statusMessage", "List GraveOwners service failed or No GraveOwners in database");
                     }
                 } else {
                     session.setAttribute("status", 2);
                     session.setAttribute("statusMessage", "No valid user logged in (Need Admin rights for this action)");
-                    dispatcher = getServletContext().getRequestDispatcher("ProcessResult.jsp");
-
                 }
 
             } else {
@@ -70,9 +70,8 @@ public class ManageGraveOwnerCommand implements Command {
                 session.setAttribute("statusMessage", "Session expired.. ");
                 dispatcher = getServletContext().getRequestDispatcher("/SessionExpired.jsp");
             }
-            dispatcher.forward(request, response);
 
-        } catch (ServletException | IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(LoginUserCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
