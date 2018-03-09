@@ -6,11 +6,16 @@
 package com.dspc_explorer.Daos;
 
 import com.dspc_explorer.Dtos.Graveowner;
+import com.dspc_explorer.Dtos.Registrar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -50,12 +55,14 @@ public class GraveOwnerDao implements GraveOwnerDaoInterface {
     }
 
     @Override
-    public boolean deleteGraveOwner(Graveowner graveonwer) {
+    public boolean deleteGraveOwner(int graveId) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
+            Graveowner graveowner = new Graveowner();
+            graveowner.setGraveId(graveId);
             if (session != null) {
-                session.delete(graveonwer);
+                session.delete(graveowner);
                 tx.commit();
                 return true;
             }
@@ -75,6 +82,7 @@ public class GraveOwnerDao implements GraveOwnerDaoInterface {
         }
         return false;
     }
+    
 
     @Override
     public boolean updateGraveOwner(Graveowner graveonwer) {
@@ -111,6 +119,8 @@ public class GraveOwnerDao implements GraveOwnerDaoInterface {
 
             tx = session.beginTransaction();
             Criteria criteria = session.createCriteria(Graveowner.class);
+            criteria.setFetchMode("section", FetchMode.JOIN)
+                    .setFetchMode("registrars", FetchMode.JOIN);
             List<Graveowner> graveOwnersList = criteria.list();
 
             tx.commit();
@@ -128,6 +138,37 @@ public class GraveOwnerDao implements GraveOwnerDaoInterface {
                 session.close();
             }
         }
+    }
+
+    @Override
+    public Graveowner getGraveOnwerById(int id) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            // here get object
+
+            Criteria criteria = session.createCriteria(Graveowner.class);
+            criteria.setFetchMode("section", FetchMode.JOIN)
+                    .setFetchMode("registrars", FetchMode.JOIN);
+
+            criteria.add(Restrictions.idEq(id));
+            List<Graveowner> list = criteria.list();
+            if (list != null && list.size() > 0) {
+                return list.get(0);
+            }
+        } catch (HibernateException ex) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            Logger.getLogger("con").log(Level.SEVERE, "Exception: {0}", ex.getMessage());
+            ex.printStackTrace(System.err);
+            System.out.println("getGraveOwnerById Exception: " + ex.getMessage());
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return null;
     }
 
 }

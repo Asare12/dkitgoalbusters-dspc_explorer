@@ -7,8 +7,8 @@ package com.dspc_explorer.Daos;
 
 import com.dspc_explorer.Dtos.Graveowner;
 import com.dspc_explorer.Dtos.Registrar;
+import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Criteria;
@@ -16,6 +16,7 @@ import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -90,7 +91,7 @@ public class RegistrarDao implements RegistrarDaoInterface {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
             if (session != null) {
-                session.save(registrar);
+                session.update(registrar);
                 tx.commit();
                 return true;
             }
@@ -147,6 +148,46 @@ public class RegistrarDao implements RegistrarDaoInterface {
             criteria.setFetchMode("graveowner", FetchMode.JOIN);
 
             criteria.add(Restrictions.idEq(UserId));
+            List<Registrar> list = criteria.list();// get the list of result obtained by given criteria
+            if (list != null && list.size() > 0) {
+                return list.get(0);
+            }
+        } catch (HibernateException ex) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            Logger.getLogger("con").log(Level.SEVERE, "Exception: {0}", ex.getMessage());
+            ex.printStackTrace(System.err);
+            System.out.println("Login Exception" + ex.getMessage());
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return null;
+
+    }
+
+    @Override
+    public Registrar multipleSearchRegistrar(String firstname, String lastName, Date ddate, Date bdate, String graveref, String graveowner) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            // here get object
+            Registrar registrar = new Registrar();
+            Graveowner graveowner1 = new Graveowner();
+            registrar.setRegFirstName(firstname);
+            registrar.setRegLastName(lastName);
+            registrar.setRegdeathDate(ddate);
+            registrar.setRegburialDate(bdate);
+            graveowner1.setGraveOwnerName(graveowner);
+            graveowner1.setGraveRefCode(graveref);
+            registrar.setGraveowner(graveowner1);
+            
+            Criteria criteria = session.createCriteria(Registrar.class);
+            criteria.setFetchMode("graveowner", FetchMode.JOIN);
+            criteria.add(Example.create(registrar));
+
             List<Registrar> list = criteria.list();// get the list of result obtained by given criteria
             if (list != null && list.size() > 0) {
                 return list.get(0);

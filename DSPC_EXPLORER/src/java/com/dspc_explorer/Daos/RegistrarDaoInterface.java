@@ -6,6 +6,7 @@
 package com.dspc_explorer.Daos;
 
 import com.dspc_explorer.Dtos.Registrar;
+import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,5 +23,7 @@ public interface RegistrarDaoInterface {
     public boolean updateRegistrar(Registrar registrar);
 
     public List<Registrar> getAllRegistar();
+    
+    public Registrar multipleSearchRegistrar(String firstname, String lastName, Date ddate, Date bdate, String graveref, String graveowner);
     
 }

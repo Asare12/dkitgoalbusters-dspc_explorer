@@ -14,12 +14,15 @@ import java.util.List;
  * @author abdul
  */
 public interface GraveOwnerDaoInterface {
-     public boolean createGraveOwner(Graveowner graveowner);
 
-    public boolean deleteGraveOwner(Graveowner graveowner);
+    public boolean createGraveOwner(Graveowner graveowner);
+
+    public boolean deleteGraveOwner(int graveId);
 
     public boolean updateGraveOwner(Graveowner graveowner);
 
     public List<Graveowner> getAllgraveOwners();
-    
+
+    public Graveowner getGraveOnwerById(int id);
+
 }
