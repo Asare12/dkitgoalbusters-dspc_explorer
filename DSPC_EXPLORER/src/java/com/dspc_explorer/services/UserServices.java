@@ -154,6 +154,24 @@ public class UserServices {
 
     }
 
+    public Graveowner getGraveOwnerById(int id) {
+        GraveOwnerDao graveOwnerDao = new GraveOwnerDao();
+        Graveowner graveowner = graveOwnerDao.getGraveOnwerById(id);
+
+        if (graveowner != null) {
+            return graveowner;
+        } else {
+            return null;
+        }
+
+    }
+
+    public boolean updateRegistrar(Registrar registrar) {
+        RegistrarDao registrarDao = new RegistrarDao();
+
+        return registrarDao.updateRegistrar(registrar);
+    }
+
     public boolean update(Users user) {
         UserDao userdao = new UserDao();
 
@@ -185,6 +203,11 @@ public class UserServices {
     public boolean deleteRegistrar(int regId) {
         RegistrarDao registrarDao = new RegistrarDao();
         return registrarDao.deleteRegistrar(regId);
+    }
+
+    public boolean deleteGraveOwner(int graveId) {
+        GraveOwnerDao graveOwnerDao = new GraveOwnerDao();
+        return graveOwnerDao.deleteGraveOwner(graveId);
     }
 
     /**
