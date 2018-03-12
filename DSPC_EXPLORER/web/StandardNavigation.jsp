@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-            <a class="navbar-brand" href="Index.jsp">SAD Financial</a>
+            <a class="navbar-brand" href="" onclick="loadFile('home.html', this);return false;">D.S.P.C Explorer</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,9 +36,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li onclick="loadFile('login.html', this);
-                        return false;">
-                    <a href="" >Login | Register </a>
+                <li>
+                    <a href="log_in.jsp" >Login | Register </a>
                 </li>
             </ul>
         </div>

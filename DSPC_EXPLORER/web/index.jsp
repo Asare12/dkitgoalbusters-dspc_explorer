@@ -89,7 +89,7 @@
                 } else
                 {
                     loadNavigation("StandardNavigation.jsp", null);
-                    loadFile("landing_page.html");
+                    loadFile("home.html");
                 }
                 if (action === 'verifyemail')
                 {

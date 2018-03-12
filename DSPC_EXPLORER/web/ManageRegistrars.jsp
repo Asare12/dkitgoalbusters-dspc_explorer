@@ -99,6 +99,7 @@
             <th>Burial Date</th>
             <th>Edit</th>         
             <th>Delete </th>
+            <th>View</th>
         </tr>
     </thead>
 
@@ -112,6 +113,7 @@
             <th>Burial Date</th>
             <th>Edit</th>
             <th>Delete </th>
+            <th>View</th>
 
         </tr>
     </tfoot>
@@ -133,6 +135,7 @@
             <td><%=reg.getRegburialDate()%></td>
             <td class="text-center"><a href="WebActionServlet?action=modifyReg&regId=<%=userId%>" data-toggle="modal" data-target="#myRegModal"><samp class="glyphicon glyphicon-edit"></samp> </td>
             <td class="text-center"><a href="#"><samp class="glyphicon glyphicon-remove" onclick="deleteRegistrar(<%=deleteId%>)"></samp></a></td>
+            <td class="text-center"><a href="#"><samp class="glyphicon glyphicon-eye-open" onclick="viewRegistrar(<%=userId%>)"></samp></a></td>
                 
         </tr>
         <%}
