@@ -68,6 +68,11 @@
                                     <div class="col-sm-5 col-xs-6 tital " ><strong>Last Name:</strong></div><div class="col-sm-7"> <%=registrar.getRegLastName()%></div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
+                                    
+                                    
+                                     <div class="col-sm-5 col-xs-6 tital " >
+                                    <button type="button"  name="View" class="btn btn-danger btn-xs delete" onclick="loadFile('maps.jsp')">View Location</button>
+                                    </div>
                                 </div>
 
                                 <div id="menu1" class="tab-pane fade">
@@ -87,6 +92,10 @@
                                     <div class="col-sm-5 col-xs-6 tital " ><strong>Place Of Birth:</strong></div><div class="col-sm-7">N/A</div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
+                                    
+                                     <div class="col-sm-5 col-xs-6 tital " >
+                                         <button type="button"  name="View" class="btn btn-danger btn-xs delete" onclick="loadFile('maps.jsp')">View Location</button>
+                                    </div>
 
                                 </div>
 
@@ -119,6 +128,9 @@
                                     <div class="col-sm-5 col-xs-6 tital " ><strong>Grave Reference Code:</strong></div><div class="col-sm-7"><%=registrar.getGraveowner().getGraveRefCode()%></div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
+                                    <div class="col-sm-5 col-xs-6 tital " >
+                                    <button type="button"  name="View" class="btn btn-danger btn-xs delete" onclick="loadFile('maps.jsp')">View Location</button>
+                                    </div>
                                 </div>
 
                                 <!--   <h4>Personal details</h4>

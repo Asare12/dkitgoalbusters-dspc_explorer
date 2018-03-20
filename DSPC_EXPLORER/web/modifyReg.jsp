@@ -39,25 +39,25 @@
             </div>
             <div class="form-group">
                 <label for="firstname">First Name</label>
-                <input type="text" class="form-control" name="firstname" placeholder="<%=reg.getRegFirstName()%>" required>
+                <input type="text" class="form-control" name="firstname"value="<%=reg.getRegFirstName() %>" placeholder="<%=reg.getRegFirstName()%>" required>
             </div>
             <div class="form-group">
                 <label for="Middlename">Middle Name</label>
-                <input type="text" class="form-control" name="middlename" placeholder="Enter Middle name(Optional)">
+                <input type="text" class="form-control" name="middlename" value="<%=reg.getRegMiddleName() %>" placeholder="Enter Middle name(Optional)">
             </div>
             <div class="form-group">
                 <label for="Lastname">Last Name</label>
-                <input type="text" class="form-control" name="lastname" placeholder="Enter Last Name">
+                <input type="text" class="form-control" name="lastname" value="<%=reg.getRegLastName() %>" placeholder="Enter Last Name">
             </div>
 
             <div class="form-group">
                 <label for="sex">Sex</label>
-                <input type="text" class="form-control" name="sex"  placeholder=" 'Male' or 'Female' ">
+                <input type="text" class="form-control" name="sex"  value="<%=reg.getRegSex() %>" placeholder=" 'Male' or 'Female' ">
             </div>
 
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="text" class="form-control" name="age" placeholder="Enter The age ">
+                <input type="text" class="form-control" name="age" value="<%=reg.getRegAge() %>" placeholder="Enter The age ">
             </div>
 
             <div class="form-group">
@@ -72,22 +72,22 @@
 
             <div class="form-group">
                 <label for="occupation">Marriage Status</label>
-                <input type="text" class="form-control" name="marStat" placeholder="Enter The occupation (optional)">
+                <input type="text" class="form-control" name="marStat" value="<%=reg.getRegMarriageStatus() %>" placeholder="Enter The occupation (optional)">
             </div>
 
             <div class="form-group">
                 <label for="depth">Death Location</label>
-                <input type="text" class="form-control" name="dlocation" placeholder="Enter a location at time of death ">
+                <input type="text" class="form-control" name="dlocation" value="<%=reg.getRegDeathLocation() %>" placeholder="Enter a location at time of death ">
             </div>
 
             <div class="form-group">
                 <label for="bdate">Death Date</label>
-                <input type="text" class="form-control" name="ddate" placeholder="Format (YYYY-MM-DD) e.g (2011-01-30) ">
+                <input type="text" class="form-control" name="ddate" value="<%=reg.getRegdeathDate() %>" placeholder="Format (YYYY-MM-DD) e.g (2011-01-30) ">
             </div>
 
             <div class="form-group">
                 <label for="bdate">Burial Date</label>
-                <input type="text" class="form-control" name="bdate" placeholder="Format (YYYY-MM-DD) e.g (2011-01-30) ">
+                <input type="text" class="form-control" name="bdate" value="<%=reg.getRegburialDate() %>" placeholder="Format (YYYY-MM-DD) e.g (2011-01-30) ">
             </div>
 
             <input type="hidden" name="action" value="modRegistrarRecords">

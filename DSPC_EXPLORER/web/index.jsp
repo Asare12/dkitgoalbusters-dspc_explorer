@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Administrator Control Page</title>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!-- Bootstrap Core CSS -->
+               <!-- Bootstrap Core CSS -->
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!--<link rel="stylesheet" href="css/layout.css"/>-->
@@ -96,50 +96,13 @@
                     verifyEmail("<%=request.getParameter("userName")%>", "<%=request.getParameter("token")%>");
                 }
             }
-
-
-            function disable() {
-
-                document.getElementById("byear").disabled = true;
-                document.getElementById("dyear").disabled = true;
-
-            }
-
-            function enable() {
-
-
-                document.getElementById("byear").disabled = false;
-                document.getElementById("dyear").disabled = false;
-
-            }
-
-            var count = 0;
-
-            function showAdminLogin() {
-
-                count++;
-
-                if (count >= 5) {
-                    count = 0;
-                    location.href = 'log_in.jsp';
-
-
-
-                }
-            }
-
-    $(".modal-content").on("hidden.bs.modal", function () {
-        $(".modal-body").html("");
-    });
         </script>
+        
 
 
     </head>
 
-
-
-    <body onload="processAttribute();
-            return false;">
+    <body onload="processAttribute();return false;">
 
         <!-- Navigation -->
         <div id="navigation">

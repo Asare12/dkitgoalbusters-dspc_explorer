@@ -225,7 +225,7 @@
                         <input type="hidden" name="action" value="addRegistrar">
                         <div class="form-group">
                             <!-- Button -->                                        
-                            <button type="submit" class="btn btn-default">Add Registrar/Deceased</button>
+                            <button type="submit" class="btn btn-default">Search</button>
                         </div>
                     </form>
                 </div>

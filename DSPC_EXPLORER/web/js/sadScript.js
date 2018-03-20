@@ -293,6 +293,30 @@ function searchRegistrar(form){
     });
     
 }
+
+function searchRecords(form){
+    var formData = $(form).serialize();
+    $.ajax({
+        async: false,
+        url: 'WebActionServlet',
+        type: 'POST',
+        data: formData,
+        success:
+                function(responseText) {
+                    // msg is the response you got from the server!
+                     $("#ajaxContainer").html(responseText);
+                    if (sessionActive === false || sessionActive === 'false')
+                    {
+                        loadNavigation("StandardNavigation.jsp", null);
+                        sessionActive = true;
+                    }
+                },
+        error: function() {
+            $("#message").html("Update User Ajax Call Failed");
+        }
+    });
+    
+}
 function setCaptcha(form)
 {
     /* var randomNr1 = Math.floor(Math.random() * 10);

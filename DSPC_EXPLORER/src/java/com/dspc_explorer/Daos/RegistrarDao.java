@@ -17,6 +17,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -167,30 +168,30 @@ public class RegistrarDao implements RegistrarDaoInterface {
         return null;
 
     }
+    
 
     @Override
-    public Registrar multipleSearchRegistrar(String firstname, String lastName, Date ddate, Date bdate, String graveref, String graveowner) {
+    public List<Registrar> multipleSearchRegistrar(String firstname, String lastName) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
             // here get object
             Registrar registrar = new Registrar();
-            Graveowner graveowner1 = new Graveowner();
-            registrar.setRegFirstName(firstname);
-            registrar.setRegLastName(lastName);
-            registrar.setRegdeathDate(ddate);
-            registrar.setRegburialDate(bdate);
-            graveowner1.setGraveOwnerName(graveowner);
-            graveowner1.setGraveRefCode(graveref);
-            registrar.setGraveowner(graveowner1);
-            
-            Criteria criteria = session.createCriteria(Registrar.class);
+            if (firstname != null && lastName == null) {
+                registrar.setRegFirstName(firstname);
+                registrar.setRegLastName(null);
+            } else if (lastName != null && firstname == null) {
+                registrar.setRegLastName(lastName);
+                registrar.setRegFirstName(null);
+            }
+
+           
+            Criteria criteria = session.createCriteria(Registrar.class).add(Example.create(registrar));
             criteria.setFetchMode("graveowner", FetchMode.JOIN);
-            criteria.add(Example.create(registrar));
 
             List<Registrar> list = criteria.list();// get the list of result obtained by given criteria
             if (list != null && list.size() > 0) {
-                return list.get(0);
+                return list;
             }
         } catch (HibernateException ex) {
             if (tx != null) {

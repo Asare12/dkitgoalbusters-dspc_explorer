@@ -178,6 +178,12 @@ public class UserServices {
         return userdao.updateUser(user);
     }
 
+    
+    public List<Registrar> searchRegistrar(String firstname, String lastName){
+        RegistrarDao registrarDao = new RegistrarDao();
+        return registrarDao.multipleSearchRegistrar(firstname, lastName);
+    }
+    
     public boolean changePassword(Users user, String password, String oldPassword, String newPassword) throws NoSuchAlgorithmException, InvalidKeySpecException, Base64DecodingException {
         UserDao userdao = new UserDao();
         byte[] salt = generateSalt();

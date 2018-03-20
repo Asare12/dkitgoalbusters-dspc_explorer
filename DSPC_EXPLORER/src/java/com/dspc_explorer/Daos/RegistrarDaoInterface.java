@@ -24,6 +24,6 @@ public interface RegistrarDaoInterface {
 
     public List<Registrar> getAllRegistar();
     
-    public Registrar multipleSearchRegistrar(String firstname, String lastName, Date ddate, Date bdate, String graveref, String graveowner);
+    public List<Registrar> multipleSearchRegistrar(String firstname, String lastName);
     
 }
