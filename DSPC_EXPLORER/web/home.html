@@ -2,222 +2,76 @@
 
 <style>
 
-
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-
-
-    button {
-        overflow: visible;
-    }
-
-    button, select {
-        text-transform: none;
-    }
-
-    button, input, select, textarea {
-        color: #5A5A5A;
-        font: inherit;
-        margin: 0;
-    }
-
-    input {
-        line-height: normal;
-    }
-
-    textarea {
-        overflow: auto;
-    }
-
-    #container {
-        border: solid 3px #474544;
-        max-width: 768px;
-        margin: 60px auto;
+    main.masthead {
         position: relative;
+        background-color: #343a40;
+        background: url("images/graveyard.jpg") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        padding-top: 16rem;
+        padding-bottom: 18rem;
+        color:white;
     }
+    
+    .transparentDiv {
+    
+    height: 70px;
+    background-color: #00B7FF;
+    opacity: 0.3;
+}
 
-    form {
-        padding: 37.5px;
-        margin: 50px 0;
-    }
-
-    h1 {
-        color: #474544;
-        font-size: 32px;
-        font-weight: 700;
-        letter-spacing: 7px;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    .underline {
-        border-bottom: solid 2px #474544;
-        margin: -0.512em auto;
-        width: 80px;
-    }
-
-    .icon_wrapper {
-        margin: 50px auto 0;
-        width: 100%;
-    }
-
-    .icon {
-        display: block;
-        fill: #474544;
-        height: 50px;
-        margin: 0 auto;
-        width: 50px;
-    }
-    .iconImages{
-        display: block;
-        height: 100px;
-        margin: 0 auto;
-        width: 100px;
-        align-items: center;
-
-    }
-
-    .email {
-        float: right;
-        width: 45%;
-    }
-    .date {
-        float: right;
-        width: 45%;
-    }
-
-   
-    input[type='text']:focus, [type='email']:focus, textarea:focus {
-        outline: none;
-        padding: 0 0 0.875em 0;
-    }
-
-    input[type='date']:focus, [type='date']:focus, textarea:focus {
-        outline: none;
-        padding: 0 0 0.875em 0;
-    }
-
-    .message {
-        float: none;
-    }
-
-    .name {
-        float: left;
-        width: 45%;
-    }
-
-    select {
-        background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
-        outline: none;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-    }
-
-    select::-ms-expand {
-        display: none;
-    }
-
-    .subject {
-        width: 100%;
-    }
-
-    .telephone {
-        width: 100%;
-    }
-
-    textarea {
-        line-height: 150%;
-        height: 150px;
-        width: 100%;
-    }
-
-    ::-webkit-input-placeholder {
-        color: #474544;
-    }
-
-    :-moz-placeholder { 
-        color: #474544;
-        opacity: 1;
-    }
-
-    ::-moz-placeholder {
-        color: #474544;
-        opacity: 1;
-    }
-
-    :-ms-input-placeholder {
-        color: #474544;
-    }
-
-    #form_button {
-        background: none;
-        border: solid 2px #474544;
-        color: #474544;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Helvetica', Arial, sans-serif;
-        font-size: 0.875em;
-        font-weight: bold;
-        outline: none;
-        padding: 20px 35px;
-        text-transform: uppercase;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -ms-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-    }
-
-    #form_button:hover {
-        background: #474544;
-        color: #F2F3EB;
-    }
-
-    @media screen and (max-width: 768px) {
-        #container {
-            margin: 20px auto;
-            width: 95%;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        h1 {
-            font-size: 26px;
-        }
-
-        .underline {
-            width: 68px;
-        }
-
-        #form_button {
-            padding: 15px 25px;
-        }
-    }
-
-    @media screen and (max-width: 420px) {
-        h1 {
-            font-size: 18px;
-        }
-
-        .icon {
-            height: 35px;
-            width: 35px;
-        }
-
-        .underline {
-            width: 53px;
-        }
-
-        input[type='text'], [type='email'], select, textarea {
-            font-size: 0.875em;
-        }
-        input[type='date'], [type='date'], select, textarea {
-            font-size: 0.875em;
-        }
-    }
 </style>
 
 
+<main class="masthead text-white text-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h1 style="color: white; ">Welcome to Dowdallshill Saint Patrick Cemetery Dundalk Website!</h1>
+            </div>
+            
+                <div class="container">
+                    <h3>Enter Details Below</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <form action="index.php" method="POST" onsubmit="searchRecords(this); return false;" class="navbar-form navbar-right" role="search" id="simple_search_form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="hidden" name="action" value="searchRecords">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" name="fname" placeholder="First name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Death Year</label>
+                                        <input type="text" class="form-control" placeholder="Death year">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Search</button>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+          
+        </div>
+    </div>
+</main>
+
+
+
+<!--
 <div class="container"  style=" text-align: center;">
 
     <div class="row">
@@ -255,8 +109,8 @@
 
         <input type="hidden" name="action" value="searchRecords">
         <div class="form-group">
-            <!-- Button -->                                        
+                                                  
             <button type="submit" class="btn btn-default">Search</button>
         </div>
-    </form><!-- // End form -->
-</div><!-- // End #container -->
+    </form>
+</div><!-- // End form --><!-- // End #container -->
